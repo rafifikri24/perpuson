@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google'
 import { useRouter } from 'next/router'
 import AdminLayout from '@/components/admin/AdminLayout'
 import "bootstrap/dist/css/bootstrap.css"
-import Background from './Background'
 import { useState,useEffect} from "react"
 import { Container, Row, Col, Card } from 'react-bootstrap'
 
