@@ -27,7 +27,7 @@ export default function Navbar() {
             }
           };
     
-          axios.get("http://localhost:5000/count-notif", config)
+          axios.get("https://perpus-smk-delta.vercel.app/count-notif", config)
             .then((response) => {
               setCount(response.data); // Assuming setCount is a function to set your book data
             })
@@ -43,7 +43,7 @@ export default function Navbar() {
     const handleLogout = async () => {
         const token = localStorage.getItem('tokenjwt');
         try {
-          const response = await axios.post('http://localhost:5000/logout', {}, {
+          const response = await axios.post('https://perpus-smk-delta.vercel.app/logout', {}, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
