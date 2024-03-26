@@ -27,7 +27,7 @@ export default function Navbar() {
             }
           };
     
-          axios.get("https://perpus-smk-delta.vercel.app/count-notif", config)
+          axios.get("http://localhost:5000/count-notif", config)
             .then((response) => {
               setCount(response.data); // Assuming setCount is a function to set your book data
             })
@@ -43,7 +43,7 @@ export default function Navbar() {
     const handleLogout = async () => {
         const token = localStorage.getItem('tokenjwt');
         try {
-          const response = await axios.post('https://perpus-smk-delta.vercel.app/logout', {}, {
+          const response = await axios.post('http://localhost:5000/logout', {}, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
@@ -63,8 +63,6 @@ export default function Navbar() {
           console.error('Error:', error);
         }
     }
-    console.log(count)
-
     return (
         <>
         <nav className="navbar bg-light" style={{ paddingBottom: "20px" }}>
@@ -80,8 +78,8 @@ export default function Navbar() {
                     </Link>
                 </button> */}
 
-          <div className="me-2">
-              <button type="button" className="position-relative notification">
+          <div className="me-2 notification">
+              <button type="button" className="position-relative">
                   <Link href="/admin/notification/page" className="text-success">
                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                           <path fill="currentColor" d="M12 2c4.97 0 9 4.043 9 9.031V20H3v-8.969C3 6.043 7.03 2 12 2M9.5 21h5a2.5 2.5 0 0 1-5 0" />
@@ -89,8 +87,8 @@ export default function Navbar() {
                   </Link>
                   {count.map((item) => (
                       <span key={item.id} className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger mt-2">
-                          {item.jumlah == 0 ? (
-                              <>{item.jumlah}<span className="visually-hidden">unread messages</span></>
+                          {item.Jumlah !== 0 ? (
+                              <>{item.Jumlah}<span className="visually-hidden">unread messages</span></>
                           ) : null}
                       </span>
                   ))}
