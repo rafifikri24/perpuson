@@ -25,7 +25,7 @@ export default function Notification() {
             }
           };
     
-          axios.get("http://localhost:5000/notif", config)
+          axios.get("https://perpus-smk-delta.vercel.app/notif", config)
             .then((response) => {
               setNotif(response.data);
             })
@@ -54,7 +54,7 @@ export default function Notification() {
         }
 
         try{
-          await axios.put(`http://localhost:5000/readStatus/${notifId}`,data,config);
+          await axios.put(`https://perpus-smk-delta.vercel.app/readStatus/${notifId}`,data,config);
         }
         catch (error) {
         console.error('Upload failed:', error);
@@ -78,7 +78,7 @@ export default function Notification() {
           Authorization: `Bearer ${token}`
         }
       };
-    axios.get("http://localhost:5000/tampil/stok/all-history",config)
+    axios.get("https://perpus-smk-delta.vercel.app/tampil/stok/all-history",config)
     .then((response)=>{
       setData(response.data)
     })
