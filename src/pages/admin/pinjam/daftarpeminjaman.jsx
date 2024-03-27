@@ -5,6 +5,8 @@ import { useRouter } from "next/router"
 import "bootstrap/dist/css/bootstrap.css"
 import Table from 'react-bootstrap/Table';
 import Link from "next/link";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -12,10 +14,18 @@ const Daftarpeminjaman = () =>{
     const router = useRouter()
     const[trx,setTrx]=useState([])
     const [query, setQuery] = useState('')
+    const [modalShow, setModalShow] = useState(false);
+    const [selectedNotifId, setSelectedNotifId] = useState(null);
     const [formData, setFormData] = useState({
       startDate: '',
       endDate: ''
     });
+
+    const handleOpenModal = async (notifId) => {
+      console.log(notifId)
+      setSelectedNotifId(notifId);
+      setModalShow(true);
+    }
 
     useEffect(() => {
       const token = localStorage.getItem('tokenjwt');
@@ -102,7 +112,76 @@ const Daftarpeminjaman = () =>{
     }));
   };
 
-  
+  function ModalFunction(props) {
+    if (!selectedNotifId) {
+      return null;
+    }
+    const selectedTransaction = trx.find(item => item.kode_transaksi === selectedNotifId);
+    const tanggal_Pinjam = new Date(selectedTransaction.tanggal_pinjam).toLocaleDateString('id-ID')
+    const tanggal_Kembali = new Date(selectedTransaction.tanggal_kembali).toLocaleDateString('id-ID')
+    return (
+      <Modal
+        {...props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Reservasi Peminjaman Buku
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <h4>Dari : {selectedTransaction.nama}</h4>
+            <table class="table">
+              <tbody>            
+                    
+                      <tr>
+                      <th scope="row">Kode Tranasaksi Pinjam</th>
+                      <td>{selectedTransaction.kode_transaksi}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">No induk Peminjam</th>
+                      <td>{selectedTransaction.no_induk}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Nama Peminjam</th>
+                      <td>{selectedTransaction.nama}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Prodi</th>
+                      <td>{selectedTransaction.prodi}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Kode Buku Yang di Pinjam</th>
+                      <td>{selectedTransaction.kode_buku}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Judul Buku</th>
+                      <td>{selectedTransaction.judul_buku}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Jumlah Pinjam</th>
+                      <td>{selectedTransaction.jumlah_pinjam}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tangal Pinjam</th>
+                      <td>{tanggal_Pinjam}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tangal Kembali</th>
+                      <td>{tanggal_Kembali}</td>
+                    </tr>
+              </tbody>
+            </table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button>Setuju</Button>
+          <Button>Tidak Setuju</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
     return (
         <>
             <AdminLayout>
@@ -223,6 +302,7 @@ const Daftarpeminjaman = () =>{
                             <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
                               <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
                             <td><button type="submit" className="btn btn-primary" onClick={() => deleteTrx(item.kode_transaksi)}>hapus</button></td>
+                            <td><button className="btn btn-primary"  onClick={() => handleOpenModal(item.kode_transaksi)}>Lihat</button></td>
                             <td>                
                               <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
                             </td>
@@ -233,6 +313,13 @@ const Daftarpeminjaman = () =>{
                       
                     </tbody>
                   </Table>
+                  <ModalFunction
+            show={modalShow}
+            onHide={() => {
+              setModalShow(false);
+              window.location.reload();
+            }}
+        />
 
                   </div>
                 </div>
@@ -307,6 +394,7 @@ const Daftarpeminjaman = () =>{
       
     </table>
     </center>
+
     <style>
   {`
   .print-section {display: none}
@@ -350,4 +438,3 @@ const Daftarpeminjaman = () =>{
 }
 
 export default Daftarpeminjaman
-
