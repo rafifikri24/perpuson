@@ -139,10 +139,10 @@ const Daftarpeminjaman = () =>{
                         }
                         if (item.status_pinjam === 0){
                           statusPinjam = 'Buku Sudah Siap'
-                          color = '#28a745'
+                          colorPinjam = '#28a745'
                         }else{
                             statusPinjam = 'Buku Tidak Siap'
-                            color = '##D21312'
+                            colorPinjam = '##D21312'
                         }
                         return(
                           <tr key={item.kode_transaksi} >
