@@ -64,13 +64,13 @@ export default function Navbar() {
             </div>
         </nav>
         <style>
-        {`
+{/*         {`
             @media (max-width: 640px) {
                 .dropdown-hidden-md {
                     display: none;
                 }
             }
-        `}
+        `} */}
         </style>
         </>
     )
