@@ -163,6 +163,7 @@ const Daftarpeminjaman = () =>{
                         <th>Tahun Terbit Buku</th>
                         <th>Jumlah Pinjam</th>
                         <th>Jumlah Buku Kembali</th>
+                        <th>Status Buku</th>
                         <th>Tanggal Pinjam</th>
                         <th>Tanggal Kembali</th>
                         <th>Status</th>
@@ -192,6 +193,17 @@ const Daftarpeminjaman = () =>{
                           }          
                         }
 
+                        let statusPinjam
+                        let colorPinjam
+
+                        if (item.status_pinjam === 0){
+                          statusPinjam = 'Buku Sudah Siap'
+                          colorPinjam = '#28a745'
+                        }else{
+                            statusPinjam = 'Buku Tidak Siap'
+                            colorPinjam = '#D21312'
+                        }
+
                         return(
                           <tr key={item.kode_transaksi}>
                             <td>{item.kode_transaksi}</td>
@@ -206,6 +218,8 @@ const Daftarpeminjaman = () =>{
                             <td>{item.jumlah_kembali}</td>
                             <td>{tanggalPinjam}</td>
                             <td>{tanggalKembali}</td>
+                            <td className="text-center text-light fw-bold" style={{backgroundColor:colorPinjam,width:'100px',height:'50px'}}>{statusPinjam}</td>
+                           
                             <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
                               <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
                             <td><button type="submit" className="btn btn-primary" onClick={() => deleteTrx(item.kode_transaksi)}>hapus</button></td>
