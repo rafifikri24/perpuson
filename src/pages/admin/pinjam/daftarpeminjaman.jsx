@@ -175,9 +175,9 @@ const Daftarpeminjaman = () =>{
               </tbody>
             </table>
         </Modal.Body>
-        <Modal.Footer>
-          <Button>Setuju</Button>
-          <Button>Tidak Setuju</Button>
+       <Modal.Footer>
+          <Button>Buku Siap</Button>
+          <Button>Buku Tidak Siap</Button>
         </Modal.Footer>
       </Modal>
     );
