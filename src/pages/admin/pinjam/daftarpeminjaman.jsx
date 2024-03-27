@@ -224,12 +224,12 @@ const Daftarpeminjaman = () =>{
                 </form>
 
                 <div className="p-4">
-                <div className="d-flex gap-3">
+                <div className="d-flex gap-3 pb-3">
                   <button onClick={() => {window.print(); return false}} className="btn btn-success">Cetak Laporan</button>
                   <button onClick={() => {router.push('/admin/pinjam/daftarMerah')}} className="btn btn-danger">Daftar Buku Harus Kembali</button>
                   </div>
-                  <div className="table-responsive">
-                  <Table striped bordered hover className="no-print" style={{marginTop:'5px'}}>
+                  <div className="table-responsive rotate-180">
+                  <Table striped bordered hover className="no-print rotate-180" style={{marginTop:'5px'}}>
                     <thead>
                       <tr>
                         <th>Kode Transaksi</th>
