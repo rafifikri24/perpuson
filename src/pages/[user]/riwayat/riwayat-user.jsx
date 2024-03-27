@@ -142,7 +142,7 @@ const Daftarpeminjaman = () =>{
                           colorPinjam = '#28a745'
                         }else{
                             statusPinjam = 'Buku Tidak Siap'
-                            colorPinjam = '##D21312'
+                            colorPinjam = '#D21312'
                         }
                         return(
                           <tr key={item.kode_transaksi} >
