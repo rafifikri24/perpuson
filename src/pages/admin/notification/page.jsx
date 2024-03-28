@@ -91,6 +91,29 @@ export default function Notification() {
   }
 },[])
 
+    const handleSetuju = async (notifId) => {
+
+      setModalShow(false);
+
+      try{
+        await axios.put(`https://localhhost:5000/statusPinjam/setuju/${notifId}`);
+      }
+      catch (error) {
+      console.error('Upload failed:', error);
+    }
+  };
+    const handleTidakSetuju = async (notifId) => {
+
+      setModalShow(false);
+
+      try{
+        await axios.put(`https://localhhost:5000/statusPinjam/tidak-setuju/${notifId}`);
+      }
+      catch (error) {
+      console.error('Upload failed:', error);
+    }
+  };
+
 function ModalFunction(props) {
   if (!selectedNotifId) {
     return null;
@@ -155,8 +178,8 @@ function ModalFunction(props) {
           </table>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Setuju</Button>
-        <Button>Tidak Setuju</Button>
+       <Button onClick={() => handleSetuju(selectedNotifId)}>Setuju</Button>
+      <Button onClick={() => handleTidakSetuju(selectedNotifId)}>Tidak Setuju</Button>
       </Modal.Footer>
     </Modal>
   );
