@@ -98,82 +98,81 @@ const Daftarpeminjaman = () =>{
                     <div className="d-flex gap-3 pb-3">
                         <button onClick={() => {window.print(); return false}} className="btn btn-success">Cetak Laporan</button>
                     </div>
-                  <div className="table-responsive">
-                  <Table striped bordered hover className="no-print" style={{marginTop:'5px'}}>
-                    <thead>
-                      <tr>
-                        <th>Kode Transaksi</th>
-                        <th>No Induk</th>
-                        <th style={{width:'100%'}}>Nama Peminjam</th>
-                        <th style={{width:'100%'}}>Judul Buku</th>
-                        <th>Jumlah Pinjam</th>
-                        <th>Jumlah Buku Kembali</th>
-                        <th>Tanggal Pinjam</th>
-                        <th>Tanggal Kembali</th>
-                        <th>Status Peminjaman</th>
-                        <th>Status Pengembalian</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {trx.map((item)=>{
-                        const today = new Date();
-                        const tenggat = new Date(item.tanggal_kembali)
-                        const tanggalPinjam = new Date(item.tanggal_pinjam).toLocaleDateString('id-ID')
-                        const tanggalKembali = new Date(item.tanggal_kembali).toLocaleDateString('id-ID')
-                        const checkTanggal = tenggat - today
-                        const durasiPinjam = Math.floor(checkTanggal / (1000 * 60 * 60 * 24));
-                        let status 
-                        let color
-                        let statusPinjam
-                        let colorPinjam
-
-                        if (item.jumlah_pinjam === item.jumlah_kembali){
-                          status = 'Sudah Kembali'
-                          color = '#28a745'
-                        }else{            
-                          status = 'Belum Kembali'
-                          color = '#444444'
-                          if (status == 'Belum Kembali' && durasiPinjam < 0) {
-                            status = 'Harus Kembali'
-                            color = '#D21312'
-                          }          
-                        }
-                        if (item.status_pinjam === 0){
-                          statusPinjam = 'Buku Sudah Siap'
-                          colorPinjam = '#28a745'
-                        }else{
-                            statusPinjam = 'Buku Tidak Siap'
-                            colorPinjam = '#D21312'
-                        }
-                        return(
-                          <tr key={item.kode_transaksi} >
-                            <td>{item.kode_transaksi}</td>
-                            <td>{item.no_induk}</td>
-                            <td>{item.nama}</td>
-                            <td><p style={{width:'500px'}}>{item.judul_buku}</p></td>
-                            <td className="text-center">{item.jumlah_pinjam}</td>
-                            <td className="text-center">{item.jumlah_kembali}</td>
-                            <td>{tanggalPinjam}</td>
-                            <td>{tanggalKembali}</td>
-                            <td className="text-center text-light fw-bold" style={{backgroundColor:colorPinjam}}>{statusPinjam}</td>
-                            <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
-                              <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
-                            <td>
-                              <div>
-                              <button type="submit" className="btn btn-primary" onClick={() => kembalikanBuku(item.kode_transaksi)}> Kembalikan </button>
-                              </div>
-                            </td>
-                            <td>                
-                              <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
-                            </td>
+                  <div className="table-responsive mirror">
+                      <Table striped bordered hover className="no-print mirror" style={{marginTop:'5px'}}>
+                        <thead>
+                          <tr>
+                            <th>Kode Transaksi</th>
+                            <th>No Induk</th>
+                            <th style={{width:'100%'}}>Nama Peminjam</th>
+                            <th style={{width:'100%'}}>Judul Buku</th>
+                            <th>Jumlah Pinjam</th>
+                            <th>Jumlah Buku Kembali</th>
+                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Kembali</th>
+                            <th>Status Peminjaman</th>
+                            <th>Status Pengembalian</th>
                           </tr>
-                        )
-
-                      })}
-                      
-                    </tbody>
-                  </Table>
+                        </thead>
+                        <tbody>
+                          {trx.map((item)=>{
+                            const today = new Date();
+                            const tenggat = new Date(item.tanggal_kembali)
+                            const tanggalPinjam = new Date(item.tanggal_pinjam).toLocaleDateString('id-ID')
+                            const tanggalKembali = new Date(item.tanggal_kembali).toLocaleDateString('id-ID')
+                            const checkTanggal = tenggat - today
+                            const durasiPinjam = Math.floor(checkTanggal / (1000 * 60 * 60 * 24));
+                            let status 
+                            let color
+                            let statusPinjam
+                            let colorPinjam
+    
+                            if (item.jumlah_pinjam === item.jumlah_kembali){
+                              status = 'Sudah Kembali'
+                              color = '#28a745'
+                            }else{            
+                              status = 'Belum Kembali'
+                              color = '#444444'
+                              if (status == 'Belum Kembali' && durasiPinjam < 0) {
+                                status = 'Harus Kembali'
+                                color = '#D21312'
+                              }          
+                            }
+                            if (item.status_pinjam === 0){
+                              statusPinjam = 'Buku Sudah Siap'
+                              colorPinjam = '#28a745'
+                            }else{
+                                statusPinjam = 'Buku Tidak Siap'
+                                colorPinjam = '#D21312'
+                            }
+                            return(
+                              <tr key={item.kode_transaksi} >
+                                <td>{item.kode_transaksi}</td>
+                                <td>{item.no_induk}</td>
+                                <td>{item.nama}</td>
+                                <td><p style={{width:'500px'}}>{item.judul_buku}</p></td>
+                                <td className="text-center">{item.jumlah_pinjam}</td>
+                                <td className="text-center">{item.jumlah_kembali}</td>
+                                <td>{tanggalPinjam}</td>
+                                <td>{tanggalKembali}</td>
+                                <td className="text-center text-light fw-bold" style={{backgroundColor:colorPinjam}}>{statusPinjam}</td>
+                                <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
+                                  <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
+                                <td>
+                                  <div>
+                                  <button type="submit" className="btn btn-primary" onClick={() => kembalikanBuku(item.kode_transaksi)}> Kembalikan </button>
+                                  </div>
+                                </td>
+                                <td>                
+                                  <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
+                                </td>
+                              </tr>
+                            )
+    
+                          })}
+                          
+                        </tbody>
+                      </Table>
 
                   </div>
                 </div>
