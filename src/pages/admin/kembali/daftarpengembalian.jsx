@@ -87,35 +87,37 @@ const Daftarpengembalian = () =>{
               }}
                />
             </header>
-            <div className="table-responsive">
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Kode Transaksi</th>
-                    <th>Tanggal Kembali</th>
-                    <th>Jumlah Buku Kembali</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  {kembali.map((item)=>{
-                    const tanggalKembali = new Date(item.tanggal_kembali).toLocaleDateString('en-US')
-                    return(
-                      <tr key={item.id_pengembalian}>
-                        <td>{item.kode_transaksi}</td>
-                        <td>{tanggalKembali}</td>
-                        <td>{item.jumlah_kembali}</td>
-                        <td><button type="submit" class="btn btn-primary" onClick={() => deleteKembali(item.id_pengembalian)}>hapus</button></td>
-                        <td>                
-                          <Link href={`/admin/kembali/${item.id_pengembalian}`}><button type="submit" class="btn btn-primary">Edit</button></Link>
-                        </td>
+            <div className="p-4">
+                <div className="table-responsive mirror">
+                  <Table striped bordered hover className="mirror">
+                    <thead>
+                      <tr>
+                        <th>Kode Transaksi</th>
+                        <th>Tanggal Kembali</th>
+                        <th>Jumlah Buku Kembali</th>
+                        
                       </tr>
-                    )
-
-                  })}
-                  
-                </tbody>
-              </Table>
+                    </thead>
+                    <tbody>
+                      {kembali.map((item)=>{
+                        const tanggalKembali = new Date(item.tanggal_kembali).toLocaleDateString('en-US')
+                        return(
+                          <tr key={item.id_pengembalian}>
+                            <td>{item.kode_transaksi}</td>
+                            <td>{tanggalKembali}</td>
+                            <td>{item.jumlah_kembali}</td>
+                            <td><button type="submit" class="btn btn-primary" onClick={() => deleteKembali(item.id_pengembalian)}>hapus</button></td>
+                            <td>                
+                              <Link href={`/admin/kembali/${item.id_pengembalian}`}><button type="submit" class="btn btn-primary">Edit</button></Link>
+                            </td>
+                          </tr>
+                        )
+    
+                      })}
+                      
+                    </tbody>
+                  </Table>
+                </div>
             </div>
             </AdminLayout>
         </>
