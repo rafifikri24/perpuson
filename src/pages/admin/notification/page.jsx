@@ -99,7 +99,7 @@ export default function Notification() {
       setModalShow(false);
 
       try{
-        await axios.put(`https://localhhost:5000/statusPinjam/setuju/${notifId}`,data);
+        await axios.put(`https://perpuson.vercel.app/statusPinjam/setuju/${notifId}`,data);
       }
       catch (error) {
       console.error('Upload failed:', error);
@@ -112,7 +112,7 @@ export default function Notification() {
       setModalShow(false);
 
       try{
-        await axios.put(`https://localhhost:5000/statusPinjam/tidak-setuju/${notifId}`,data);
+        await axios.put(`https://perpuson.vercel.app/statusPinjam/tidak-setuju/${notifId}`,data);
       }
       catch (error) {
       console.error('Upload failed:', error);
