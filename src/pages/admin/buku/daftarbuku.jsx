@@ -94,7 +94,7 @@ const Daftarbuku = () =>{
               <div className="p-4">
                 <button type="submit" class="btn btn-success" style={{marginBottom:15}} onClick={() => router.push(`/admin/buku/cetak/semua`)}>Cetak Semua</button>
                 <div className="table-responsive mirror">
-                  <Table striped bordered hover>
+                  <Table striped bordered hover className="mirror">
                     <thead>
                       <tr>
                         <th>Kode Buku</th>
