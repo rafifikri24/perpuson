@@ -92,22 +92,27 @@ export default function Notification() {
 },[])
 
     const handleSetuju = async (notifId) => {
+                const data = {
+          status_pinjam : '1'
+        }
 
       setModalShow(false);
 
       try{
-        await axios.put(`https://localhhost:5000/statusPinjam/setuju/${notifId}`);
+        await axios.put(`https://localhhost:5000/statusPinjam/setuju/${notifId}`,data);
       }
       catch (error) {
       console.error('Upload failed:', error);
     }
   };
     const handleTidakSetuju = async (notifId) => {
-
+            const data = {
+          status_pinjam : '0'
+        }
       setModalShow(false);
 
       try{
-        await axios.put(`https://localhhost:5000/statusPinjam/tidak-setuju/${notifId}`);
+        await axios.put(`https://localhhost:5000/statusPinjam/tidak-setuju/${notifId}`,data);
       }
       catch (error) {
       console.error('Upload failed:', error);
