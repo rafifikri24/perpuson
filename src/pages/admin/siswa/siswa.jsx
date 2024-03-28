@@ -88,8 +88,8 @@ const Mahasiswa = () =>{
                />
             </header>
             <div className="p-4">
-              <div className="table-responsive">
-                <Table striped bordered hover>
+              <div className="table-responsive mirror">
+                <Table striped bordered hover className="mirror">
                   <thead>
                     <tr>
                       <th>No Peminjam</th>
