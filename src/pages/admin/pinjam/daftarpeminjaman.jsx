@@ -275,7 +275,7 @@ const Daftarpeminjaman = () =>{
                         let statusPinjam
                         let colorPinjam
 
-                        if (item.status_pinjam === 1){
+                        if (item.status_pinjam === 0){
                           statusPinjam = 'Buku Sudah Siap'
                           colorPinjam = '#28a745'
                         }else{
