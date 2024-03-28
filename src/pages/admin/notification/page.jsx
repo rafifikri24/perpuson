@@ -99,12 +99,13 @@ export default function Notification() {
       setModalShow(false);
 
       try{
-        await axios.put(`https://perpuson.vercel.app/statusPinjam/setuju/${notifId}`,data);
+        await axios.put(`https://perpus-smk-delta.vercel.app/statusPinjam/setuju/${notifId}`,data);
       }
       catch (error) {
       console.error('Upload failed:', error);
     }
   };
+  
     const handleTidakSetuju = async (notifId) => {
             const data = {
           status_pinjam : '0'
@@ -112,7 +113,7 @@ export default function Notification() {
       setModalShow(false);
 
       try{
-        await axios.put(`https://perpuson.vercel.app/statusPinjam/tidak-setuju/${notifId}`,data);
+        await axios.put(`https://perpus-smk-delta.vercel.app/statusPinjam/tidak-setuju/${notifId}`,data);
       }
       catch (error) {
       console.error('Upload failed:', error);
