@@ -112,6 +112,35 @@ const Daftarpeminjaman = () =>{
     }));
   };
 
+        const handleSetuju = async (notifId) => {
+                const data = {
+          status_pinjam : '1'
+        }
+
+      setModalShow(false);
+
+      try{
+        await axios.put(`https://perpus-smk-delta.vercel.app/statusPinjam/setuju/${notifId}`,data);
+      }
+      catch (error) {
+      console.error('Upload failed:', error);
+    }
+  };
+  
+    const handleTidakSetuju = async (notifId) => {
+            const data = {
+          status_pinjam : '0'
+        }
+      setModalShow(false);
+
+      try{
+        await axios.put(`https://perpus-smk-delta.vercel.app/statusPinjam/tidak-setuju/${notifId}`,data);
+      }
+      catch (error) {
+      console.error('Upload failed:', error);
+    }
+  };
+    
   function ModalFunction(props) {
     if (!selectedNotifId) {
       return null;
@@ -176,9 +205,9 @@ const Daftarpeminjaman = () =>{
             </table>
         </Modal.Body>
        <Modal.Footer>
-          <Button>Buku Siap</Button>
-          <Button>Buku Tidak Siap</Button>
-        </Modal.Footer>
+       <Button onClick={() => handleSetuju(selectedNotifId)}>Setuju</Button>
+      <Button onClick={() => handleTidakSetuju(selectedNotifId)}>Tidak Setuju</Button>
+      </Modal.Footer>
       </Modal>
     );
   }
