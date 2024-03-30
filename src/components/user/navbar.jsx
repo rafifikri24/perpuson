@@ -9,16 +9,69 @@ import  Modal  from "react-bootstrap/Modal";
 
 export default function Navbar() {
     const [userName, setUsername] = useState('')
+    const [passwd, setPasswd] = useState('')
+    const [nama, setNama] = useState('');
+    const [prodi,setProdi] = useState('')
+    const [noInduk,setNoInduk] = useState('')
+    
     const router = useRouter()
-    const [modalShow, setModalShow] = useState(false);
+    const [show, setShow] = useState(false);
 
     const { user } = router.query
+    
 
-    useEffect(() => {
-        const username = localStorage.getItem('username');
-        setUsername(username)
-    })
+    useEffect(()=>{
+        const fetchData = async()=>{
+            try{
+                const response = await axios.get(`https://perpus-smk-delta.vercel.app/tampil/siswa/${user}`)
+                setNoInduk(response.data[0].no_induk)
+                setNama(response.data[0].nama)
+                setProdi(response.data[0].prodi)
+                setUsername(response.data[0].username)
+    
+            } catch (error){
+                console.log(error)
+            }
+        };
+        fetchData();
+    },[user])
 
+    const handleSubmit = async(a)=> {
+        a.preventDefault();
+        const data = {
+            no_induk : noInduk,
+            nama : nama,
+            prodi : prodi,
+            username : userName,
+            password : passwd
+        }
+        const token = localStorage.getItem('tokenjwt');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        console.log(data)
+
+        try {
+            const response = await axios.put(`https://perpus-smk-delta.vercel.app/edit/siswa/${user}`, data, config);
+            console.log(response.data);
+            setNoInduk('')
+            setNama('')
+            setProdi('')
+            setUsername('')
+            setPasswd('')
+            window.location.reload();
+        } catch (error) {
+            if(error.response.status === 400){
+                alert(error.response.data[0].message)
+            }else(
+                alert("Data Peminjam Tidak Sesuai")
+            )
+          console.error('Upload failed:', error);
+          // Tambahkan tindakan setelah upload gagal, misalnya menampilkan pesan error
+        }
+    }
     const handleLogout = async () => {
         const token = localStorage.getItem('tokenjwt');
         try {
@@ -42,43 +95,9 @@ export default function Navbar() {
           console.error('Error:', error);
         }
     }
-    const handleOpenModal = () => {
-        setModalShow(true);
-      }
-    
-
-    function ModalFunction(props) {
-        return (
-          <Modal
-            {...props}
-            size="md"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                Ganti Password
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <form>
-                    <div class="mb-3">
-                        <label for="Nama" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="Username" placeholder="Username" value='' />
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="Password" placeholder="Password" value='' />
-                    </div>
-                    <Modal.Footer>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </Modal.Footer>
-                </form>
-            </Modal.Body>
-
-          </Modal>
-        );
-      }
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+ 
     return (
         <>
         <nav className="navbar bg-light" style={{ paddingBottom: "20px" }}>
@@ -93,7 +112,7 @@ export default function Navbar() {
 
                             <Dropdown.Menu>
                             <Dropdown.Item href={`/${user}/riwayat/riwayat-user`}>Riwayat Pinjam Buku</Dropdown.Item>
-                                <Dropdown.Item onClick={handleOpenModal}>Ganti Password</Dropdown.Item>
+                                <Dropdown.Item onClick={handleShow}>Profil</Dropdown.Item>
                                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -101,13 +120,39 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
-        <ModalFunction
-            show={modalShow}
-            onHide={() => {
-              setModalShow(false);
-            }}
-        />
-
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Profil</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <form onSubmit={handleSubmit}>
+                <div class="mb-3">
+                    <label for="Nama" class="form-label">No Induk</label>
+                    <input type="text" class="form-control" id="Nama" placeholder="No Induk" value={noInduk} onChange={(a) => setUsername(a.target.value)} disabled/>
+                </div>
+                <div class="mb-3">
+                    <label for="Nama" class="form-label">Nama Peminjam</label>
+                    <input type="text" class="form-control" id="Nama" placeholder="Nama Peminjam" value={nama} onChange={(a) => setNama(a.target.value)} required/>
+                </div>
+                <div class="mb-3">
+                    <label for="Prodi" class="form-label">Prodi</label>
+                    <input type="text" class="form-control" id="Prodi" placeholder="Prodi" value={prodi} onChange={(a) => setProdi(a.target.value)} required/>
+                </div>
+                <div class="mb-3">
+                    <label for="Prodi" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="Prodi" placeholder="Username" value={userName} onChange={(a) => setUsername(a.target.value)} required/>
+                </div>
+                <div class="mb-3">
+                    <label for="Prodi" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="Prodi" placeholder="Password" onChange={(a) => setPasswd(a.target.value)} required/>
+                </div>
+                <div className="d-flex flex-wrap align-items-center justify-content-end">
+                    <button type="submit" class="btn btn-primary mx-2">Submit</button>
+                    <button variant="secondary" class="btn btn-secondary mx-2" onClick={handleClose}>Close</button>
+                </div>
+            </form>
+        </Modal.Body>
+        </Modal>
         </>
     )
 };
