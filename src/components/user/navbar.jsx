@@ -3,13 +3,14 @@ import "bootstrap/dist/css/bootstrap.css"
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Head from "next/head"
 import axios from "axios";
 import { useRouter } from "next/router"
+import  Modal  from "react-bootstrap/Modal";
 
 export default function Navbar() {
     const [userName, setUsername] = useState('')
     const router = useRouter()
+    const [modalShow, setModalShow] = useState(false);
 
     const { user } = router.query
 
@@ -41,14 +42,45 @@ export default function Navbar() {
           console.error('Error:', error);
         }
     }
+    const handleOpenModal = () => {
+        setModalShow(true);
+      }
+    
 
+    function ModalFunction(props) {
+        return (
+          <Modal
+            {...props}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Ganti Password
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <form>
+                    <div class="mb-3">
+                        <label for="Nama" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="Username" placeholder="Username" value='' />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Prodi" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="Password" placeholder="Password" value='' />
+                    </div>
+                    <Modal.Footer>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </Modal.Footer>
+                </form>
+            </Modal.Body>
+
+          </Modal>
+        );
+      }
     return (
         <>
-        <Head>
-            <title>Perpustakan SMK PGRI 1 Banyuwangi</title>
-            <link rel="icon" type="image/png" href="/smkpgri1banyuwangi.png" sizes="32x32" />
-            <meta name='description' content='SMK PGRI 1 BANYUWANGI memiliki 4 bidang kejuruan yaitu Teknik Pemesinan, Teknik Kendaraan Ringan, Teknik Elektronika Industri dan AKUNTANSI KEUANGAN dan LEMBAGA.' />
-        </Head>
         <nav className="navbar bg-light" style={{ paddingBottom: "20px" }}>
             <div className="container-fluid">
                 <a className="navbar-brand text-dark" href={`/${user}/buku/daftarbuku`} >Perpustakaan SMK PGRI Banyuwangi</a>
@@ -61,7 +93,7 @@ export default function Navbar() {
 
                             <Dropdown.Menu>
                             <Dropdown.Item href={`/${user}/riwayat/riwayat-user`}>Riwayat Pinjam Buku</Dropdown.Item>
-                                <Dropdown.Item href="/admin/editadmin/edit">Ganti Password</Dropdown.Item>
+                                <Dropdown.Item onClick={handleOpenModal}>Ganti Password</Dropdown.Item>
                                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -69,15 +101,13 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
-        <style>
-{/*         {`
-            @media (max-width: 640px) {
-                .dropdown-hidden-md {
-                    display: none;
-                }
-            }
-        `} */}
-        </style>
+        <ModalFunction
+            show={modalShow}
+            onHide={() => {
+              setModalShow(false);
+            }}
+        />
+
         </>
     )
-}
+};
