@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
 import "bootstrap/dist/css/bootstrap.css"
 import Head from "next/head";
