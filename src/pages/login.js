@@ -5,7 +5,7 @@ import Head from "next/head";
 import axios from 'axios'
 const FormLogin = () => {
 
-    const navigasi = useRouter()
+    const router = useRouter()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
