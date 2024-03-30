@@ -91,6 +91,7 @@ const handleSubmit =async(a)=>{
         pengarang : pengarang,
         penerbit : penerbit,
         tahun_terbit : tahunterbit,
+        status_pinjam : 0,
         jumlah_pinjam : jumlahpinjam,
         tanggal_pinjam : tanggalpinjam,
         tanggal_kembali : tanggalkembali,
