@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import { useState,useEffect} from "react"
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import NavbarLanding from '@/components/admin/navbarLand'
+import axios from 'axios'
 
 export default function Home() {
     const router = useRouter()
