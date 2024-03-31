@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from 'next/navigation'
 import "bootstrap/dist/css/bootstrap.css"
 import Head from "next/head";
@@ -14,29 +14,7 @@ const FormLogin = () => {
     const handleRoleChange = (selectedRole) => {
         setRole(selectedRole);
     }
-
-        useEffect(() => {
-        const token = localStorage.getItem('tokenjwt');
-        
-        if (token) {
-          const config = {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          };
     
-          axios.get("https://perpus-smk-delta.vercel.app/get-me", config)
-            .then((response) => {
-                router.push(response.data.location);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else {
-          console.log('not login')
-          router.push('/login');
-        }
-      }, [])
     let Login
     if (role == "admin"){
         Login = async(e) => {
