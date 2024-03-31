@@ -7,6 +7,29 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import NavbarLanding from '@/components/admin/navbarLand'
 
 export default function Home() {
+    const router = useRouter()
+  useEffect(() => {
+    const token = localStorage.getItem('tokenjwt');
+    
+    if (token) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+
+      axios.get("https://perpus-smk-delta.vercel.app/get-me", config)
+        .then((response) => {
+            router.push(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      console.log('not login')
+      router.push('/');
+    }
+  }, [])
   return (
     <>
       <div>
