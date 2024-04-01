@@ -72,8 +72,12 @@ const handleSubmit =async(a)=>{
                         <input type="text" class="form-control" id="Username" placeholder="Username" value={user} onChange={(a) => setUser(a.target.value)}/>
                     </div>
                     <div class="mb-3">
+                        <label for="Telegram" class="form-label">No. Telegram</label>
+                        <input type="text" class="form-control" id="Telegram" placeholder="No. Telegram" value={user} onChange={(a) => setUser(a.target.value)}/>
+                    </div>
+                    <div class="mb-3">
                         <label for="Prodi" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="Password" placeholder="Password" value={pass} onChange={(a) => setPass(a.target.value)}/>
+                        <input type="text" class="form-control" id="Password" placeholder="Password" onChange={(a) => setPass(a.target.value)}/>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
