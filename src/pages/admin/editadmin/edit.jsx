@@ -51,6 +51,7 @@ const handleSubmit =async(a)=>{
     }
     console.log(data)
     const token = localStorage.getItem('tokenjwt');
+    const username = localStorage.getItem('username');
 
         const config = {
           headers: {
@@ -59,6 +60,7 @@ const handleSubmit =async(a)=>{
 
     try {
         const response = await axios.put(`https://perpus-smk-delta.vercel.app/edit/admin/${username}`,data,config);
+        localStorage.setItem('username',user)
         window.location='/admin/home'
     } catch (error) {
         console.error(error);
