@@ -104,7 +104,7 @@ const handleSubmit =async(a)=>{
                         <label class="form-label">2. Klik tombol search/pencarian.</label>
                         <img src="/tutor1.jpg" className="rounded" alt="tutorial" style={{ marginRight: "10px" }} width={350} height={350}/>
                         <br />
-                        <label class="form-label">3. Ketik {"'Get My ID'"} pada kolom pencarian.</label>
+                        <label class="form-label">3. Ketik {"'Get My ID'"} pada kolom pencarian lalu pilih bot Get My ID seperti dibawah.</label>
                         <img src="/tutor2.jpg" className="rounded" alt="tutorial" style={{ marginRight: "10px" }} width={350} height={350}/>
                         <br />
                         <label class="form-label">4. Ketik {"'/start'"} dan kirim. User ID/Chat ID berhasil di dapatkan.</label>
