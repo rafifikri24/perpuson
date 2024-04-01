@@ -30,9 +30,8 @@ export default function Home() {
       <AdminLayout>
 
       <div class="bg-center bg-cover h-screen p-2 bg-no-repeat bg-blend-multiply">
-        <h1>Dashboard</h1>
         <div class="col-md-15 p-5 pt-2">
-          <h3><i class="fas fa-tachometer-alt mr-2"></i>PERPUSTAKAAN SMK PGRI 1 BANYUWANGI</h3><hr/>
+          <h3><i class="fas fa-tachometer-alt mr-2"></i>DASHBOARD PERPUSTAKAAN SMK PGRI 1 BANYUWANGI</h3><hr/>
           <div>
           </div>
 
