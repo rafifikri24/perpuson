@@ -138,7 +138,7 @@ const Daftarpeminjaman = () =>{
                                 color = '#D21312'
                               }          
                             }
-                            if (item.status_pinjam === 0){
+                            if (item.status_pinjam === 1){
                               statusPinjam = 'Buku Sudah Siap'
                               colorPinjam = '#28a745'
                             }else{
