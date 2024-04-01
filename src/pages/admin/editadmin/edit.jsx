@@ -7,7 +7,8 @@ import axios from "axios"
 const Edit = () =>{
     const router = useRouter()
     const [user, setUser] = useState('');
-    const [pass, setPass] = useState('')
+    const [pass, setPass] = useState('');
+    const [chatId, setChatId] = useState('');
  ////////////////
 
  useEffect(() => {
@@ -28,6 +29,7 @@ const Edit = () =>{
             const response = await axios.get(`https://perpus-smk-delta.vercel.app/tampil/admin`,config)
             setUser(response.data[0].username)
             setPass(response.data[0].password)
+            setChatId(response.data[0].chatId)
 
         } catch (error){
             console.log(error)
@@ -41,6 +43,7 @@ const handleSubmit =async(a)=>{
     a.preventDefault();
     const data = { 
         username : user,
+        chatId : chatId,
         password : pass
     }
     console.log(data)
@@ -72,8 +75,8 @@ const handleSubmit =async(a)=>{
                         <input type="text" class="form-control" id="Username" placeholder="Username" value={user} onChange={(a) => setUser(a.target.value)}/>
                     </div>
                     <div class="mb-3">
-                        <label for="Telegram" class="form-label">No. Telegram</label>
-                        <input type="text" class="form-control" id="Telegram" placeholder="No. Telegram" value={user} onChange={(a) => setUser(a.target.value)}/>
+                        <label for="Telegram" class="form-label">Chat ID Telegram</label>
+                        <input type="text" class="form-control" id="Telegram" placeholder="Chat ID Telegram" value={user} onChange={(a) => setUser(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Password</label>
