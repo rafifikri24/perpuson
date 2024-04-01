@@ -324,10 +324,9 @@ const Daftarpeminjaman = () =>{
                             <td>{item.tahun_terbit}</td>
                             <td>{item.jumlah_pinjam}</td>
                             <td>{item.jumlah_kembali}</td>
-                            <td>{tanggalPinjam}</td>
-                            <td>{tanggalKembali}</td>
                             <td className="text-center text-light fw-bold" style={{backgroundColor:colorPinjam,width:'100px',height:'50px'}}>{statusPinjam}</td>
-                           
+                            <td>{tanggalPinjam}</td>
+                            <td>{tanggalKembali}</td>                           
                             <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
                               <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
                             <td><button type="submit" className="btn btn-primary" onClick={() => deleteTrx(item.kode_transaksi)}>hapus</button></td>
