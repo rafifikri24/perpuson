@@ -98,7 +98,7 @@ const handleSubmit =async(a)=>{
                         Cara mendapatkan Chat ID Telegram
                     </Modal.Title>
                 </Modal.Header>
-                    <div className="modal-dialog modal-dialog-scrollable">
+                    <div className="modal-dialog modal-dialog-scrollable" style={{ padding: "0 10px"}}>
                         <label class="form-label">1. Buka aplikasi Telegram.</label>
                         <br />
                         <label class="form-label">2. Klik tombol search/pencarian.</label>
