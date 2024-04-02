@@ -100,17 +100,17 @@ const handleSubmit =async(a)=>{
                         <label for="No" class="form-label">Kode Transaksi</label>
                         <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodePinjam} onChange={(a) => setKodetransaksi(a.target.value)}/>
                     </div>
-                    <div class="mb-3">
+                     <div class="mb-3">
                         <label for="No" class="form-label">Judul Buku</label>
-                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={judulBuku} onChange={(a) => setKodetransaksi(a.target.value)}/>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={judulBuku} onChange={(a) => setJudulBuku(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="No" class="form-label">Nama Peminjam</label>
-                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={namaPeminjam} onChange={(a) => setKodetransaksi(a.target.value)}/>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={namaPeminjam} onChange={(a) => setNamaPeminjam(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="No" class="form-label">Jumlah Buku Yang di Pinjam</label>
-                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={jumlahPinjam} onChange={(a) => setKodetransaksi(a.target.value)}/>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={jumlahPinjam} onChange={(a) => setIdpengembalian(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Tanggal Kembali</label>
