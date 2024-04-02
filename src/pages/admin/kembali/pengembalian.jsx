@@ -10,6 +10,9 @@ const Pengembalian = () =>{
     const [kodetransaksi, setKodetransaksi] = useState('');
     const [tanggalkembali,setTanggalkembali] = useState('')
     const [jumlahkembali,setJumlahkembali] = useState('')
+    const [judulBuku,setJudulBuku] = useState('')
+    const [jumlahPinjam,setJumlahpinjam] = useState('')
+    const [namaPeminjam,setNamaPeminjam] = useState('')
 
     useEffect(() => {
         const token = localStorage.getItem('tokenjwt');
@@ -34,6 +37,21 @@ const Pengembalian = () =>{
     
         getNextIdFromDatabase();
       }, []);
+
+      const fetchDataPeminjaman = async (kodetransaksi) => {
+        try {
+          const response = await axios.get(`https://perpus-smk-delta.vercel.app/tampil/trx/${kodetransaksi}`)
+          setJudulBuku(response.data[0].judul_buku);
+          setNamaPeminjam(response.data[0].nama);
+          setJumlahpinjam(response.data[0].jumlah_pinjam);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setJudulBuku('Tidak Ditemukan');
+          setNamaPeminjam('Tidak Ditemukan');
+          setJumlahpinjam('Tidak Ditemukan');
+        }
+      }
+
 
 const handleSubmit =async(a)=>{
     a.preventDefault();
@@ -80,7 +98,19 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3">
                         <label for="No" class="form-label">Kode Transaksi</label>
-                        <input required type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodetransaksi} onChange={(a) => setKodetransaksi(a.target.value)}/>
+                        <input required type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodetransaksi} onChange={(a) => {setKodetransaksi(a.target.value);fetchDataPeminjaman(a.target.value)}}/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="No" class="form-label">Judul Buku</label>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={judulBuku} onChange={(a) => setJudulBuku(a.target.value)}/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="No" class="form-label">Nama Peminjam</label>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={namaPeminjam} onChange={(a) => setNamaPeminjam(a.target.value)}/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="No" class="form-label">Jumlah Buku Yang di Pinjam</label>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={jumlahPinjam} onChange={(a) => setIdpengembalian(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Tanggal Kembali</label>
