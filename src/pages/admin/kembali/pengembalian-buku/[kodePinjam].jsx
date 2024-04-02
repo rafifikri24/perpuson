@@ -43,6 +43,7 @@ const Pengembalian = () =>{
         const fetchData = async()=>{
             try{
                 const response = await axios.get(`https://perpus-smk-delta.vercel.app/tampil/trx/${kodePinjam}`)
+                setKodetransaksi(response.data[0].kode_transaksi)
                 setJudulBuku(response.data[0].judul_buku)
                 setNamaPeminjam(response.data[0].nama)
                 setJumlahpinjam(response.data[0].jumlah_pinjam)
@@ -59,7 +60,8 @@ const handleSubmit =async(a)=>{
         id_pengembalian: idpengembalian ,
         kode_transaksi : kodetransaksi,
         tanggal_kembali : tanggalkembali,
-        jumlah_kembali : jumlahkembali
+        jumlah_kembali : jumlahkembali,
+        judul_buku : judulBuku
     }
     const token = localStorage.getItem('tokenjwt');
     const config = {
@@ -98,7 +100,7 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3">
                         <label for="No" class="form-label">Kode Transaksi</label>
-                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodePinjam} onChange={(a) => setKodetransaksi(a.target.value)}/>
+                        <input disabled type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodetransaksi} onChange={(a) => setKodetransaksi(a.target.value)}/>
                     </div>
                      <div class="mb-3">
                         <label for="No" class="form-label">Judul Buku</label>
@@ -122,7 +124,7 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                        <label class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
+                        <label required class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
                     </div>
                     <button type="submit" class="btn btn-primary" >Submit</button>
                 </form>
