@@ -332,7 +332,7 @@ const Daftarpeminjaman = () =>{
                             <td><button type="submit" className="btn btn-primary" onClick={() => deleteTrx(item.kode_transaksi)}>hapus</button></td>
                             <td><button className="btn btn-primary"  onClick={() => handleOpenModal(item.kode_transaksi)}>Lihat</button></td>
                             <td>                
-                              <Link href={`/admin/kembali/pengembalian`}><button type="submit" className="btn  btn-primary">Kembalikan</button></Link>
+                              <Link href={`/admin/kembali/pengembalian-buku/${item.kode_transaksi}`}><button type="submit" className="btn  btn-primary">Kembalikan</button></Link>
                             </td>
                             <td>                
                               <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
