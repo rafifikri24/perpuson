@@ -40,29 +40,6 @@ const Daftarpeminjaman = () =>{
     }
   },[])
 
-    const kembalikanBuku = (id) => {
-      const token = localStorage.getItem('tokenjwt');
-
-      if (result) {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }}
-
-      if (result) {
-        axios
-        .delete(`https://perpus-smk-delta.vercel.app/hapus/trx/${id}`,config)
-        .then((response) => {
-          console.log(response.data);
-          setTrx(trx.filter((item) => item.kode_transaksi !== id));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      };
-    }
-  }
-
   const searchPinjam = () => {
 
     try {
@@ -158,11 +135,6 @@ const Daftarpeminjaman = () =>{
                                 <td className="text-center text-light fw-bold" style={{backgroundColor:colorPinjam}}>{statusPinjam}</td>
                                 <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
                                   <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
-                                <td>
-                                  <div>
-                                  <button type="submit" className="btn btn-primary" onClick={() => kembalikanBuku(item.kode_transaksi)}> Kembalikan </button>
-                                  </div>
-                                </td>
                                 <td>                
                                   <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
                                 </td>
