@@ -95,7 +95,7 @@ const Mahasiswa = () =>{
                       <th>No Peminjam</th>
                       <th>Nama Peminjam</th>
                       <th>Prodi</th>
-                      
+                      <th>Username</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -105,6 +105,7 @@ const Mahasiswa = () =>{
                           <td>{item.no_induk}</td>
                           <td>{item.nama}</td>
                           <td>{item.prodi}</td>
+                          <td>{item.username}</td>
                           <td><button type="submit" class="btn btn-primary" onClick={() => deleteSiswa(item.no_induk)}>hapus</button></td>
                           <td><button type="submit" class="btn btn-primary" onClick={() => router.push(`/admin/pinjam/pinjambynoinduk/${item.no_induk}`)}>Pinjam</button></td>
                           <td>                
