@@ -92,7 +92,7 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="Password" placeholder="Enter Password" value={passwd} onChange={(a) => setProdi(a.target.value)}/>
+                        <input type="text" class="form-control" id="Password" placeholder="Enter Password" onChange={(a) => setProdi(a.target.value)}/>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
