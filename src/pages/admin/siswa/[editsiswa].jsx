@@ -42,11 +42,11 @@ const Edit = () =>{
 const handleSubmit =async(a)=>{
     a.preventDefault();
     const data = { 
-        no_induk : no_induk,
+        no_induk : noinduk,
         nama : nama,
         prodi : prodi,
         username : username,
-        password : password
+        password : passwd
 
     }
     console.log(data)
