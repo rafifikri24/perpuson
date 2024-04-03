@@ -76,7 +76,7 @@ const handleSubmit =async(a)=>{
                 <form onSubmit={handleSubmit}>
                     <div class="mb-3">
                         <label for="Nama" class="form-label">No Peminjam</label>
-                        <input type="text" class="form-control" id="Peminjam" placeholder="Enter No Pinjam" value={noInduk} onChange={(a) => setNama(a.target.value)}/>
+                        <input type="text" class="form-control" id="Peminjam" placeholder="Enter No Pinjam" value={noInduk} onChange={(a) => setNoInduk(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="Nama" class="form-label">Nama Peminjam</label>
@@ -88,11 +88,11 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="Username" placeholder="Enter Username" value={username} onChange={(a) => setProdi(a.target.value)}/>
+                        <input type="text" class="form-control" id="Username" placeholder="Enter Username" value={username} onChange={(a) => setUsername(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="Password" placeholder="Enter Password" onChange={(a) => setProdi(a.target.value)}/>
+                        <input type="password" class="form-control" id="Password" placeholder="Enter Password" onChange={(a) => setPasswd(a.target.value)}/>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
