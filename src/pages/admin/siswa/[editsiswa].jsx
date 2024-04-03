@@ -62,13 +62,27 @@ const handleSubmit =async(a)=>{
     return (
         <>
         <AdminLayout>
+            <div className="p-4">
+            </div>
         <form onSubmit={handleSubmit}>
+            <div class="mb-3">
+                <label for="Nama" class="form-label">No Peminjam</label>
+                <input type="text" class="form-control" id="Peminjam" placeholder="Enter No Pinjam" value={nama} onChange={(a) => setNama(a.target.value)}/>
+            </div>
             <div class="mb-3">
                 <label for="Nama" class="form-label">Nama Peminjam</label>
                 <input type="text" class="form-control" id="Nama" placeholder="Enter Nama Siswa" value={nama} onChange={(a) => setNama(a.target.value)}/>
             </div>
             <div class="mb-3">
                 <label for="Prodi" class="form-label">Prodi</label>
+                <input type="text" class="form-control" id="Prodi" placeholder="Enter Prodi" value={prodi} onChange={(a) => setProdi(a.target.value)}/>
+            </div>
+            <div class="mb-3">
+                <label for="Prodi" class="form-label">Username</label>
+                <input type="text" class="form-control" id="Prodi" placeholder="Enter Prodi" value={prodi} onChange={(a) => setProdi(a.target.value)}/>
+            </div>
+            <div class="mb-3">
+                <label for="Prodi" class="form-label">Password</label>
                 <input type="text" class="form-control" id="Prodi" placeholder="Enter Prodi" value={prodi} onChange={(a) => setProdi(a.target.value)}/>
             </div>
             <div class="mb-3 form-check">
