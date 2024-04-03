@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import "bootstrap/dist/css/bootstrap.css"
 import Table from 'react-bootstrap/Table';
 import Link from "next/link";
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -12,6 +13,8 @@ const Daftarpengembalian = () =>{
     const router = useRouter()
     const[kembali,setKembali]=useState([])
     const [query, setQuery] = useState('')
+    const [modalShow, setModalShow] = useState(false);    
+    const [selectedNotifId, setSelectedNotifId] = useState(null);
 
     useEffect(() => {
       const token = localStorage.getItem('tokenjwt');
@@ -71,6 +74,89 @@ const Daftarpengembalian = () =>{
     
   };
   
+  const handleOpenModal = async (notifId) => {
+    console.log(notifId)
+    setSelectedNotifId(notifId);
+    setModalShow(true);
+  }
+
+  function ModalFunction(props) {
+    if (!selectedNotifId) {
+      return null;
+    }
+    const selectedTransaction = kembali.find(item => item.kode_transaksi === selectedNotifId);
+    const tanggal_Pinjam = new Date(selectedTransaction.tanggal_pinjam).toLocaleDateString('id-ID')
+    const tanggal_Kembali = new Date(selectedTransaction.tanggal_kembali).toLocaleDateString('id-ID')
+    let status
+    let colorText
+    if (selectedTransaction.jumlah_pinjam != selectedTransaction.jumlah_kembali){
+      status = '(Jumlah Tidak Sesuai)'
+      colorText = 'red'
+    }
+    return (
+      <Modal
+        {...props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+           Data Pengembalian Buku
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <h4>Dari : {selectedTransaction.nama}</h4>
+            <table class="table">
+              <tbody>            
+                    
+                      <tr>
+                      <th scope="row">Kode Tranasaksi Pinjam</th>
+                      <td>{selectedTransaction.kode_transaksi}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">No induk Peminjam</th>
+                      <td>{selectedTransaction.no_induk}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Nama Peminjam</th>
+                      <td>{selectedTransaction.nama}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Prodi</th>
+                      <td>{selectedTransaction.prodi}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Kode Buku Yang di Pinjam</th>
+                      <td>{selectedTransaction.kode_buku}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Judul Buku</th>
+                      <td>{selectedTransaction.judul_buku}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Jumlah Pinjam</th>
+                      <td>{selectedTransaction.jumlah_pinjam}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Jumlah Kembali</th>
+                      <td style={{color:colorText}}>{selectedTransaction.jumlah_kembali} {status}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tangal Pinjam</th>
+                      <td>{tanggal_Pinjam}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tangal Kembali</th>
+                      <td>{tanggal_Kembali}</td>
+                    </tr>
+              </tbody>
+            </table>
+        </Modal.Body>
+      </Modal>
+    );
+  }
+  
     return (
         <>
             <AdminLayout>
@@ -94,7 +180,6 @@ const Daftarpengembalian = () =>{
                       <tr>
                         <th>Kode Transaksi</th>
                         <th>Tanggal Kembali</th>
-                        <th>Jumlah Buku Kembali</th>
                         
                       </tr>
                     </thead>
@@ -105,7 +190,7 @@ const Daftarpengembalian = () =>{
                           <tr key={item.id_pengembalian}>
                             <td>{item.kode_transaksi}</td>
                             <td>{tanggalKembali}</td>
-                            <td>{item.jumlah_kembali}</td>
+                            <td><button className="btn btn-primary"  onClick={() => handleOpenModal(item.kode_transaksi)}>Lihat</button></td>
                             <td><button type="submit" class="btn btn-primary" onClick={() => deleteKembali(item.id_pengembalian)}>hapus</button></td>
                             <td>                
                               <Link href={`/admin/kembali/${item.id_pengembalian}`}><button type="submit" class="btn btn-primary">Edit</button></Link>
@@ -117,6 +202,12 @@ const Daftarpengembalian = () =>{
                       
                     </tbody>
                   </Table>
+                  <ModalFunction
+            show={modalShow}
+            onHide={() => {
+              setModalShow(false);
+            }}
+        />
                 </div>
             </div>
             </AdminLayout>
