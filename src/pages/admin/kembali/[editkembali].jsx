@@ -66,26 +66,28 @@ const handleSubmit =async(a)=>{
     return (
         <>
             <AdminLayout>
-                <form onSubmit={handleSubmit}>
-                    <h1>Form Edit Pengembalian Buku</h1>
-                    <div class="mb-3">
-                        <label for="No" class="form-label">Kode Transaksi</label>
-                        <input type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodetransaksi} onChange={(a) => setKodetransaksi(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Tanggal Kembali</label>
-                        <input type="date" class="form-control" id="Prodi" placeholder="Stock"value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="No" class="form-label">Jumlah Pengembalian</label>
-                        <input type="text" class="form-control" id="No" placeholder="Id Pengembalian" value={jumlahkembali} onChange={(a) => setJumlahkembali(a.target.value)}/>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                        <label class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary" >Submit</button>
-                </form>
+                <div className="p-4">
+                    <form onSubmit={handleSubmit}>
+                        <h1>Form Edit Pengembalian Buku</h1>
+                        <div class="mb-3">
+                            <label for="No" class="form-label">Kode Transaksi</label>
+                            <input type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={kodetransaksi} onChange={(a) => setKodetransaksi(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">Tanggal Kembali</label>
+                            <input type="date" class="form-control" id="Prodi" placeholder="Stock"value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="No" class="form-label">Jumlah Pengembalian</label>
+                            <input type="text" class="form-control" id="No" placeholder="Id Pengembalian" value={jumlahkembali} onChange={(a) => setJumlahkembali(a.target.value)}/>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                            <label class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
+                    </form>
+                </div>
             </AdminLayout>
         </>
     )
