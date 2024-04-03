@@ -42,7 +42,7 @@ const Edit = () =>{
 const handleSubmit =async(a)=>{
     a.preventDefault();
     const data = { 
-        no_induk : noinduk,
+        no_induk : noInduk,
         nama : nama,
         prodi : prodi,
         username : username,
