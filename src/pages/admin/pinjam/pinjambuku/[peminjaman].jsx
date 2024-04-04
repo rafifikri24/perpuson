@@ -132,7 +132,7 @@ const handleSubmit =async(a)=>{
             <AdminLayout>
                 <div className="p-4">
                     <form onSubmit={handleSubmit}>
-                        <h1>Form Peminjaman Buku</h1>
+                        <h1>Form Peminjaman Buku ddddddd</h1>
                         <div class="mb-3">
                             <label for="No" class="form-label">Kode Transaksi</label>
                             <input type="text" class="form-control" id="No" placeholder="Kode Transaksi" value={nextId} onChange={(a) => setNextId(a.target.value)}/>
