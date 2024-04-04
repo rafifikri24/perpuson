@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.css"
 import React, { useState,useEffect} from "react"
 import axios from "axios"
 import Navbar from "@/components/user/navbar"
-import { Dropdown } from 'primereact/dropdown';
 
 const Peminjaman = () =>{
     const [selectedItem, setSelectedItem] = useState(null);
@@ -193,11 +192,7 @@ const handleSubmit =async(a)=>{
                         <label for="Prodi" class="form-label">Tanggal Pinjam</label>
                         <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} onChange={(a) => setTanggalpinjam(a.target.value)}/>
                     </div>
-                    <div class="mb-3">
-                        <div className="card flex justify-content-center">
-            <Dropdown value={selectedItem} onChange={(e) => setSelectedItem(e.value)} options={items} virtualScrollerOptions={{ itemSize: 5 }} 
-                placeholder="Lama Peminjaman" className="w-full md:w-14rem" />
-        </div>
+                    
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
