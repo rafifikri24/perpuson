@@ -7,9 +7,10 @@ import axios from "axios"
 const Peminjaman = () =>{
     const router = useRouter()
     const { peminjaman } = router.query
+    const currentDate = new Date().toISOString().slice(0, 10);
     const [noinduk, setNoinduk] = useState('');
     const [jumlahpinjam, setJumlahpinjam] = useState('');
-    const [tanggalpinjam, setTanggalpinjam] = useState('');
+    const [tanggalpinjam, setTanggalpinjam] = useState('currentDate');
     const [tanggalkembali, setTanggalkembali] = useState('');
     const [nextId, setNextId] = useState('');
     const [namaPeminjam,setNamaPeminjam] = useState('')
@@ -18,6 +19,7 @@ const Peminjaman = () =>{
     const [penerbit, setPenerbit] = useState('');
     const [tahunterbit, setTahunterbit] = useState('');
     const [kode, setKode] = useState('');
+    
 
     useEffect(() => {
         const token = localStorage.getItem('tokenjwt');
