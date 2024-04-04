@@ -171,7 +171,7 @@ const handleSubmit =async(a)=>{
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Tanggal Pinjam</label>
-                            <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} onChange={(a) => setTanggalpinjam(a.target.value)}/>
+                            <input required type='text' class="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} onChange={(a) => setTanggalpinjam(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Tanggal Kembali</label>
