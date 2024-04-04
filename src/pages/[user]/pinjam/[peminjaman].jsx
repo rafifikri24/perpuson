@@ -1,13 +1,11 @@
 import AdminLayout from "@/components/admin/AdminLayout"
 import { useRouter } from "next/router"
 import "bootstrap/dist/css/bootstrap.css"
-import React, { useState,useEffect} from "react"
+import { useState,useEffect} from "react"
 import axios from "axios"
 import Navbar from "@/components/user/navbar"
 
 const Peminjaman = () =>{
-    const [selectedItem, setSelectedItem] = useState(null);
-    const items = Array.from({ length: 20 }).map((_, i) => ({ label: `${i} hari`, value: i }));
     const router = useRouter()
     const { peminjaman } = router.query
     const [noinduk, setNoinduk] = useState('');
@@ -187,12 +185,13 @@ const handleSubmit =async(a)=>{
                         <label for="Prodi" class="form-label">Jumlah Pinjam</label>
                         <input required type="text" class="form-control" id="Prodi" placeholder="Jumlah Pinjam"value={jumlahpinjam} onChange={(a) => setJumlahpinjam(a.target.value)}/>
                     </div>
-                    
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Tanggal Pinjam</label>
                         <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} onChange={(a) => setTanggalpinjam(a.target.value)}/>
                     </div>
-                    
+                    <div class="mb-3">
+                        <label for="Prodi" class="form-label">Tanggal Kembali</label>
+                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali"value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
