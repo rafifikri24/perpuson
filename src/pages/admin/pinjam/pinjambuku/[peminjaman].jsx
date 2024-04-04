@@ -139,43 +139,43 @@ const handleSubmit =async(a)=>{
                         </div>
                         <div class="mb-3">
                             <label for="Nama" class="form-label">Kode </label>
-                            <input required type="text" class="form-control" id="Nama" placeholder="No Induk"value={noinduk} onChange={(a) => {setNoinduk(a.target.value);fetchNamaPeminjam(a.target.value)}}/>
+                            <input required type="text" class="form-control" id="Nama" placeholder="No Induk" value={noinduk} onChange={(a) => {setNoinduk(a.target.value);fetchNamaPeminjam(a.target.value)}}/>
                         </div>
                         <div class="mb-3">
                             <label for="Nama" class="form-label">Nama Peminjam</label>
-                            <input disabled type="text" class="form-control" id="Nama" placeholder="Nama Peminjam"value={namaPeminjam} onChange={(a) => setNamaPeminjam(a.target.value)}/>
+                            <input disabled type="text" class="form-control" id="Nama" placeholder="Nama Peminjam" value={namaPeminjam} onChange={(a) => setNamaPeminjam(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Kode Buku</label>
-                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Kode Buku"value={kode} onChange={(a) => setKode(a.target.value)}/>
+                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Kode Buku" value={kode} onChange={(a) => setKode(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Judul Buku</label>
-                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Judul Buku"value={judul} onChange={(a) => setJudul(a.target.value)}/>
+                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Judul Buku" value={judul} onChange={(a) => setJudul(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Pengarang Buku</label>
-                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Pengarang Buku"value={pengarang} onChange={(a) => setPengarang(a.target.value)}/>
+                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Pengarang Buku" value={pengarang} onChange={(a) => setPengarang(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Penerbit Buku</label>
-                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Penerbit Buku"value={penerbit} onChange={(a) => setPenerbit(a.target.value)}/>
+                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Penerbit Buku" value={penerbit} onChange={(a) => setPenerbit(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Tahun Terbit</label>
-                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Tahun Terbit"value={tahunterbit} onChange={(a) => setTahunterbit(a.target.value)}/>
+                            <input disabled type="text" class="form-control" id="Prodi" placeholder="Tahun Terbit" value={tahunterbit} onChange={(a) => setTahunterbit(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Jumlah Pinjam</label>
-                            <input required type="text" class="form-control" id="Prodi" placeholder="Jumlah Pinjam"value={jumlahpinjam} onChange={(a) => setJumlahpinjam(a.target.value)}/>
+                            <input required type="text" class="form-control" id="Prodi" placeholder="Jumlah Pinjam" value={jumlahpinjam} onChange={(a) => setJumlahpinjam(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Tanggal Pinjam</label>
-                            <input required type='text' class="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} min={currentDate} onChange={(a) => setTanggalpinjam(a.target.value)}/>
+                            <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam" value={tanggalpinjam} min={currentDate} onChange={(a) => setTanggalpinjam(a.target.value)}/>
                         </div>
                         <div class="mb-3">
                             <label for="Prodi" class="form-label">Tanggal Kembali</label>
-                            <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali"value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
+                            <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali" value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
