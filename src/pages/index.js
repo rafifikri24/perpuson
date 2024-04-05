@@ -21,7 +21,7 @@ export default function Home() {
 
       axios.get("https://perpus-smk-delta.vercel.app/get-me", config)
         .then((response) => {
-            window.location.href = response.data
+            window.location.href = response.data.redirectUrl
         })
         .catch((error) => {
           console.log(error);
