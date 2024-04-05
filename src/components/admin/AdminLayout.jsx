@@ -1,7 +1,9 @@
 import SideBar from "./SideBar"
 import Navbar from "./navbar"
 import Head from "next/head"
-
+import useAuth from "./protector"
+import {useEffect} from "react"
+import axios from "axios"
 const AdminLayout = ({children}) => {
     return (
         <>   <Head>
