@@ -1,13 +1,14 @@
 import SideBar from "./SideBar"
 import Navbar from "./navbar"
 import Head from "next/head"
-import useAuth from "./protector"
 import {useEffect} from "react"
 import axios from "axios"
+import { useRouter } from 'next/router'
 const AdminLayout = ({children}) => {
+  const router = useRouter()
+  
     useEffect(() => {
-    const token = localStorage.getItem('tokenjwt');
-    
+    const token = localStorage.getItem('tokenjwt');    
     if (token) {
       const config = {
         headers: {
@@ -17,7 +18,9 @@ const AdminLayout = ({children}) => {
 
       axios.get("https://perpus-smk-delta.vercel.app/get-me", config)
         .then((response) => {
-            useAuth(response.data.role)
+          const isAdmin = response.data.roleToken
+            if(isAdmin != 'admin'){
+              router.push('/authorized')}
         })
         .catch((error) => {
           console.log(error);
