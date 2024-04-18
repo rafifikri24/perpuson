@@ -26,6 +26,11 @@ const Peminjaman = () =>{
     const [penerbit, setPenerbit] = useState('');
     const [tahunterbit, setTahunterbit] = useState('');
     const [kode, setKode] = useState('');
+    function handledayschange(event) {
+        const hari = parseInt(event.target.value);
+        setJumlahHari(hari);
+        setTanggalkembali(getReturnDate(tanggalpinjam, hari))
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('tokenjwt');
