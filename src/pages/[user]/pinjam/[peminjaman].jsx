@@ -7,11 +7,19 @@ import Navbar from "@/components/user/navbar"
 
 const Peminjaman = () =>{
     const router = useRouter()
+    const getReturnDate = (tanggalpinjam, jumlahHari) => {
+        const returnDate = new Date(tanggalpinjam);
+        returnDate.setDate(returnDate.getDate() + jumlahHari);
+        return returnDate
+      };
     const { peminjaman } = router.query
+    const currentDate = new Date().toISOString().slice(0, 10);
+    const [jumlahHari, setJumlahHari ] = useState('')
     const [noinduk, setNoinduk] = useState('');
     const [jumlahpinjam, setJumlahpinjam] = useState('');
-    const [tanggalpinjam, setTanggalpinjam] = useState('');
-    const [tanggalkembali, setTanggalkembali] = useState('');
+    const [tanggalpinjam, setTanggalpinjam] = useState(currentDate);
+    const [tanggalkembali, setTanggalkembali] = useState(getReturnDate(currentDate, jumlahHari));
+    const kembali = tanggalkembali.toISOString().split('T')[0]
     const [nextId, setNextId] = useState('');
     const [namaPeminjam,setNamaPeminjam] = useState('')
     const [judul, setJudul] = useState('');
@@ -19,7 +27,11 @@ const Peminjaman = () =>{
     const [penerbit, setPenerbit] = useState('');
     const [tahunterbit, setTahunterbit] = useState('');
     const [kode, setKode] = useState('');
-
+    function handledayschange(event) {
+        const hari = parseInt(event.target.value);
+        setJumlahHari(hari);
+        setTanggalkembali(getReturnDate(tanggalpinjam, hari))
+    }
     const { user } = router.query
 
     useEffect(() => {
@@ -94,7 +106,7 @@ const handleSubmit =async(a)=>{
         status_pinjam : 0,
         jumlah_pinjam : jumlahpinjam,
         tanggal_pinjam : tanggalpinjam,
-        tanggal_kembali : tanggalkembali,
+        tanggal_kembali : kembali,
 
     }
     const token = localStorage.getItem('tokenjwt');
@@ -119,7 +131,7 @@ const handleSubmit =async(a)=>{
       setTahunterbit('')
       setJumlahpinjam('')
       setTanggalpinjam('')
-      setTanggalkembali('')
+      // setTanggalkembali('')
       window.location=`/${user}/riwayat/riwayat-user`
       // Tambahkan tindakan setelah upload berhasil, misalnya menampilkan pesan sukses
     } catch (error) {
@@ -187,11 +199,22 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Tanggal Pinjam</label>
-                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} onChange={(a) => setTanggalpinjam(a.target.value)}/>
+                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam" value={tanggalpinjam} disabled min={currentDate} onChange={(a) => setTanggalpinjam(a.target.value)}/>
+                    </div>
+                    <div class="mb-3">
+                    <label for="Prodi" class="form-label">Lama Peminjaman</label>
+                        <select class="form-select" aria-label="Default select example" value={jumlahHari} onChange={handledayschange}>
+                            <option selected value="" >Pilih</option>
+                            <option value={3}>3 hari</option>
+                            <option value={5}>5 hari</option>
+                            <option value={10}>10 hari</option>
+                            <option value={15}>15 hari</option>
+                            <option value={20}>20 hari</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Tanggal Kembali</label>
-                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali"value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
+                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali" disabled value={kembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
