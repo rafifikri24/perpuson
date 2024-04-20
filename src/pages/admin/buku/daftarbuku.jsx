@@ -6,12 +6,17 @@ import "bootstrap/dist/css/bootstrap.css"
 import Table from 'react-bootstrap/Table';
 import Link from "next/link";
 import QRCode from 'qrcode.react';
+import  Modal  from "react-bootstrap/Modal";
 
 
 
 const Daftarbuku = () =>{
     const router = useRouter()
-    const[buku,setBuku]=useState([])
+    const [buku,setBuku] = useState([])
+    const [show, setShow] = useState(false);
+    const [judul,setJudulBuku] = useState('')
+    const [kode,setKodeBuku] = useState('')
+    const [quantity, setQuantity] = useState(0);
 
     useEffect(() => {
       const isLoggedIn = localStorage.getItem('isLoggedIn')
@@ -73,8 +78,16 @@ const Daftarbuku = () =>{
       }
       
     };
+    const handleClose = () => setShow(false);
+    const handleShow = (kode_buku) => {
+      setShow(true);
+      const selectedBook = buku.find(item => item.kode_buku === kode_buku);
+      setJudulBuku(selectedBook.judul_buku)
+      setKodeBuku(selectedBook.kode_buku)
+    }
+    
 
-       return (
+    return (
         <>
             <AdminLayout>
                 <header className="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0 " style={{ height: '3rem', zIndex: 1, padding :'10px',justifyContent: 'center', display:'flex',marginBottom:5}}>        
@@ -92,7 +105,7 @@ const Daftarbuku = () =>{
                 </header>
                 
               <div className="p-4">
-                <button type="submit" class="btn btn-success" style={{marginBottom:15}} onClick={() => router.push(`/admin/buku/cetak/semua`)}>Cetak Semua</button>
+                <button type="submit" className="btn btn-success" style={{marginBottom:15}} onClick={() => router.push(`/admin/buku/cetak/printall/semua`)}>Cetak Semua</button>
                 <div className="table-responsive mirror">
                   <Table striped bordered hover className="mirror">
                     <thead>
@@ -123,13 +136,14 @@ const Daftarbuku = () =>{
                             <td>{item.pengarang}</td>
                             <td>{item.penerbit}</td>
                             <td>{item.tahun_terbit}</td>
-                            <td><button type="submit" class="btn btn-primary" onClick={() => router.push(`/admin/pinjam/pinjambuku/${item.kode_buku}`)}>Pinjam</button></td>
-                            <td><button type="submit" class="btn btn-danger" onClick={() => deletePmnjm(item.kode_buku)}>Hapus</button></td>
+                            <td><button type="submit" className="btn btn-primary" onClick={() => router.push(`/admin/pinjam/pinjambuku/${item.kode_buku}`)}>Pinjam</button></td>
+                            <td><button type="submit" className="btn btn-danger" onClick={() => deletePmnjm(item.kode_buku)}>Hapus</button></td>
                             <td>                
-                              <Link href={`/admin/buku/${item.kode_buku}`}><button type="submit" class="btn btn-secondary">Edit</button></Link>
+                              <Link href={`/admin/buku/${item.kode_buku}`}><button type="submit" className="btn btn-secondary">Edit</button></Link>
                             </td>
                             <td>
-                            <button type="submit" class="btn btn-success" onClick={() => router.push(`/admin/buku/cetak/${item.kode_buku}`)}>Cetak</button>
+                            <button type="submit" className="btn btn-success" onClick={() => handleShow(item.kode_buku)}>Cetak</button>
+                            {/* <button type="submit" className="btn btn-success" onClick={() => router.push(`/admin/buku/cetak/${item.kode_buku}`)}>Cetak</button> */}
                             </td>
                               
                           </tr>
@@ -139,6 +153,25 @@ const Daftarbuku = () =>{
                       
                     </tbody>
                   </Table>
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Cetak Stiker</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <div className="mb-3">
+                        <label htmlFor="judul" className="form-label">Judul Buku</label>
+                        <input type="text" className="form-control" id="judul" placeholder="Judul Buku" value={judul} disabled/>
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="quantity" className="form-label">Jumlah yang ingin dicetak</label>
+                        <input type="number" className="form-control" id="quantity" placeholder="Jumlah stiker" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+                      </div>
+                      <div className="d-flex flex-wrap align-items-center justify-content-end">
+                        <button className="btn btn-primary mx-2" onClick={() => router.push(`/admin/buku/cetak/printbyid/${kode}?quantity=${quantity}`)}>Cetak</button>
+                        <button variant="secondary" className="btn btn-secondary mx-2" onClick={handleClose}>Close</button>
+                      </div>
+                    </Modal.Body>
+                  </Modal>
                 </div>
               </div>
             </AdminLayout>
