@@ -16,6 +16,8 @@ export default function Navbar() {
     
     const router = useRouter()
     const [show, setShow] = useState(false);
+    const [showNotif, setShowNotif] = useState(false);
+    const [notif, setNotif] = useState([]);
 
     const { user } = router.query
     
@@ -35,6 +37,18 @@ export default function Navbar() {
         };
         fetchData();
     },[user])
+
+    useEffect(() => {
+      
+          axios.get(`https://perpus-smk-delta.vercel.app/notifUser/${user}`)
+            .then((response) => {
+              setNotif(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+      })
 
     const handleSubmit = async(a)=> {
         a.preventDefault();
@@ -97,6 +111,8 @@ export default function Navbar() {
     }
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleCloseNotif = () => setShowNotif(false);
+    const handleShowNotif = () => setShowNotif(true);
  
     return (
         <>
@@ -113,6 +129,7 @@ export default function Navbar() {
                             <Dropdown.Menu>
                             <Dropdown.Item href={`/${user}/riwayat/riwayat-user`}>Riwayat Pinjam Buku</Dropdown.Item>
                                 <Dropdown.Item onClick={handleShow}>Profil</Dropdown.Item>
+                                <Dropdown.Item onClick={handleShowNotif}>Notifikasi</Dropdown.Item>
                                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -152,6 +169,32 @@ export default function Navbar() {
                 </div>
             </form>
         </Modal.Body>
+        </Modal>
+        <Modal show={showNotif} onHide={handleCloseNotif}>
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    Notifikasi
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <table className="table">
+                <tbody>
+                  {notif.map((item)=>{
+                    if(item.mesage_user == null){
+                        return null
+                    }else{
+                        return(
+                            <tr key={item.id}>
+                              <td>{item.mesage_user}</td>
+                            </tr>
+                          )
+                    }                 
+
+                  })}
+                  
+                </tbody>
+                </table>
+            </Modal.Body>
         </Modal>
         </>
     )
