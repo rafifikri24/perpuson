@@ -133,7 +133,7 @@ const Daftarpeminjaman = () =>{
                                 <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
                                   <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
                                 <td>                
-                                  <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
+                                  <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn btn-primary">Cetak</button></Link>
                                 </td>
                               </tr>
                             )
