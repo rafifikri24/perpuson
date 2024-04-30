@@ -113,7 +113,7 @@ export default function Navbar() {
     const handleShow = () => setShow(true);
     const handleCloseNotif = () => setShowNotif(false);
     const handleShowNotif = () => setShowNotif(true);
- 
+    
     return (
         <>
         <nav className="navbar bg-light" style={{ paddingBottom: "20px" }}>
@@ -180,14 +180,12 @@ export default function Navbar() {
                 <table className="table">
                 <tbody>
                   {notif.map((item)=>{
-                    const tanggal_notif = new Date(item.creation_time).toLocaleDateString('id-ID');
                     if(item.mesage_user == null){
                         return null
                     }else{
                         return(
                             <tr key={item.id}>
                               <td>{item.mesage_user}</td>
-                              <td>{tanggal_notif}</td>
                             </tr>
                           )
                     }                 
