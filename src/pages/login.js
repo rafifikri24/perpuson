@@ -64,6 +64,7 @@ const FormLogin = () => {
                 localStorage.setItem('tokenjwt',res.data.token)
                 localStorage.setItem('username',username)
                 alert("BERHASIL LOGIN")
+                console.log("Username", username, "Password", password);
                 window.location.href = res.data.redirectUrl;
               } else {
                 alert('Email atau Password Salah')
