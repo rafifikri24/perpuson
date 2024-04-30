@@ -72,9 +72,6 @@ const Daftarpeminjaman = () =>{
                   />
                 </header>
                 <div className="p-4">
-                    <div className="d-flex gap-3 pb-3">
-                        <button onClick={() => {window.print(); return false}} className="btn btn-success">Cetak Laporan</button>
-                    </div>
                   <div className="table-responsive mirror">
                       <Table striped bordered hover className="no-print mirror" style={{marginTop:'5px'}}>
                         <thead>
