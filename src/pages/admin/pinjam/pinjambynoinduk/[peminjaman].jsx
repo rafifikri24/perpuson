@@ -181,7 +181,7 @@ const handleSubmit =async(a)=>{
                             <input required type="text" class="form-control" id="Prodi" placeholder="Jumlah Pinjam"value={jumlahpinjam} onChange={(a) => setJumlahpinjam(a.target.value)}/>
                         </div>
                         <div class="mb-3">
-                            <label for="Prodi" class="form-label">Tanggal Pinjam</label>
+                            <label for="Prodi" class="form-label">Tanggal Pinjam <span><small>(Bulan / Tanggal / Tahun)</small></span></label>
                             <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam" value={tanggalpinjam} disabled min={currentDate} onChange={(a) => setTanggalpinjam(a.target.value)}/>
                         </div>
                         <div class="mb-3">
@@ -193,10 +193,16 @@ const handleSubmit =async(a)=>{
                                 <option value={10}>10 hari</option>
                                 <option value={15}>15 hari</option>
                                 <option value={20}>20 hari</option>
+                                <option value={30}>1 Bulan</option>
+                                <option value={60}>2 Bulan</option>
+                                <option value={90}>3 Bulan</option>
+                                <option value={120}>4 Bulan</option>
+                                <option value={150}>5 Bulan</option>
+                                <option value={180}>6 Bulan</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="Prodi" class="form-label">Tanggal Kembali</label>
+                            <label for="Prodi" class="form-label">Tanggal Kembali <span><small>(Bulan / Tanggal / Tahun)</small></span></label>
                             <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali" disabled value={kembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
                         </div>
                         <div class="mb-3 form-check">
