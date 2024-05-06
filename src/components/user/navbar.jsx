@@ -116,6 +116,11 @@ export default function Navbar() {
     
     return (
         <>
+        <Head>
+            <title>Perpustakan SMK PGRI 1 Banyuwangi</title>
+            <link rel="icon" type="image/png" href="/smkpgri1banyuwangi.png" sizes="32x32" />
+            <meta name='description' content='SMK PGRI 1 BANYUWANGI memiliki 4 bidang kejuruan yaitu Teknik Pemesinan, Teknik Kendaraan Ringan, Teknik Elektronika Industri dan AKUNTANSI KEUANGAN dan LEMBAGA.' />
+        </Head>
         <nav className="navbar bg-light" style={{ paddingBottom: "20px" }}>
             <div className="container-fluid">
                 <a className="navbar-brand text-dark" href={`/${user}/buku/daftarbuku`} >Perpustakaan SMK PGRI Banyuwangi</a>
