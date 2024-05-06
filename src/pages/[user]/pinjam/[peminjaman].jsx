@@ -210,6 +210,12 @@ const handleSubmit =async(a)=>{
                             <option value={10}>10 hari</option>
                             <option value={15}>15 hari</option>
                             <option value={20}>20 hari</option>
+                            <option value={30}>1 Bulan</option>
+                            <option value={60}>2 Bulan</option>
+                            <option value={90}>3 Bulan</option>
+                            <option value={120}>4 Bulan</option>
+                            <option value={150}>5 Bulan</option>
+                            <option value={180}>6 Bulan</option>
                         </select>
                     </div>
                     <div class="mb-3">
