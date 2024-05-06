@@ -6,17 +6,30 @@ import axios from "axios"
 
 const Peminjaman = () =>{
     const router = useRouter()
+    const getReturnDate = (tanggalpinjam, jumlahHari) => {
+        const returnDate = new Date(tanggalpinjam);
+        returnDate.setDate(returnDate.getDate() + jumlahHari);
+        return returnDate
+      };
+    const currentDate = new Date().toISOString().slice(0, 10);
+    const [jumlahHari, setJumlahHari ] = useState('')
     const [noinduk, setNoinduk] = useState('');
     const [kodebuku,setKodebuku] = useState('')
     const [jumlahpinjam, setJumlahpinjam] = useState('');
-    const [tanggalpinjam, setTanggalpinjam] = useState('');
-    const [tanggalkembali, setTanggalkembali] = useState('');
+    const [tanggalpinjam, setTanggalpinjam] = useState(currentDate);
+    const [tanggalkembali, setTanggalkembali] = useState(getReturnDate(currentDate, jumlahHari));
+    const kembali = tanggalkembali.toISOString().split('T')[0]
     const [nextId, setNextId] = useState('');
     const [namaPeminjam,setNamaPeminjam] = useState('')
     const [judul, setJudul] = useState('');
     const [pengarang, setPengarang] = useState('');
     const [penerbit, setPenerbit] = useState('');
     const [tahunterbit, setTahunterbit] = useState('');
+    function handledayschange(event) {
+        const hari = parseInt(event.target.value);
+        setJumlahHari(hari);
+        setTanggalkembali(getReturnDate(tanggalpinjam, hari))
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('tokenjwt');
@@ -59,7 +72,7 @@ const handleSubmit =async(a)=>{
         tahun_terbit : tahunterbit,
         jumlah_pinjam : jumlahpinjam,
         tanggal_pinjam : tanggalpinjam,
-        tanggal_kembali : tanggalkembali,
+        tanggal_kembali : kembali,
 
     }
     const token = localStorage.getItem('tokenjwt');
@@ -85,7 +98,7 @@ const handleSubmit =async(a)=>{
       setTahunterbit('')
       setJumlahpinjam('')
       setTanggalpinjam('')
-      setTanggalkembali('')
+      // setTanggalkembali('')
       window.location='/admin/pinjam/daftarpeminjaman'
     } catch (error) {
       alert(error)
@@ -159,13 +172,30 @@ const handleSubmit =async(a)=>{
                         <label for="Prodi" className="form-label">Jumlah Pinjam</label>
                         <input required type="text" className="form-control" id="Prodi" placeholder="Jumlah Pinjam"value={jumlahpinjam} onChange={(a) => setJumlahpinjam(a.target.value)}/>
                     </div>
-                    <div className="mb-3">
-                        <label for="Prodi" className="form-label">Tanggal Pinjam</label>
-                        <input required type='date' className="form-control" id="Prodi" placeholder="Tanggal Pinjam"value={tanggalpinjam} onChange={(a) => setTanggalpinjam(a.target.value)}/>
+                    <div class="mb-3">
+                        <label for="Prodi" class="form-label">Tanggal Pinjam <span><small>(Bulan / Tanggal / Tahun)</small></span></label>
+                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Pinjam" value={tanggalpinjam} disabled min={currentDate} onChange={(a) => setTanggalpinjam(a.target.value)}/>
                     </div>
-                    <div className="mb-3">
-                        <label for="Prodi" className="form-label">Tanggal Kembali</label>
-                        <input required type='date' className="form-control" id="Prodi" placeholder="Tanggal Kembali"value={tanggalkembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
+                    <div class="mb-3">
+                    <label for="Prodi" class="form-label">Lama Peminjaman</label>
+                        <select class="form-select" aria-label="Default select example" value={jumlahHari} onChange={handledayschange}>
+                            <option selected value="" >Pilih</option>
+                            <option value={3}>3 hari</option>
+                            <option value={5}>5 hari</option>
+                            <option value={10}>10 hari</option>
+                            <option value={15}>15 hari</option>
+                            <option value={20}>20 hari</option>
+                            <option value={30}>1 Bulan</option>
+                            <option value={60}>2 Bulan</option>
+                            <option value={90}>3 Bulan</option>
+                            <option value={120}>4 Bulan</option>
+                            <option value={150}>5 Bulan</option>
+                            <option value={180}>6 Bulan</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Prodi" class="form-label">Tanggal Kembali <span><small>(Bulan / Tanggal / Tahun)</small></span></label>
+                        <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali" disabled value={kembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
                     </div>
                     <div className="mb-3 form-check">
                         <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
