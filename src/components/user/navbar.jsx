@@ -6,6 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import axios from "axios";
 import { useRouter } from "next/router"
 import  Modal  from "react-bootstrap/Modal";
+import Head from "next/head"
 
 export default function Navbar() {
     const [userName, setUsername] = useState('')
