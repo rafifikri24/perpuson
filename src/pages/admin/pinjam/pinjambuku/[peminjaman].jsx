@@ -187,7 +187,7 @@ const handleSubmit =async(a)=>{
                         <div class="mb-3">
                         <label for="Prodi" class="form-label">Lama Peminjaman</label>
                             <select class="form-select" aria-label="Default select example" value={jumlahHari} onChange={handledayschange}>
-                                <option selected value="" >Pilih</option>
+                                <option selected value={0} >Pilih</option>
                                 <option value={3}>3 hari</option>
                                 <option value={5}>5 hari</option>
                                 <option value={10}>10 hari</option>
