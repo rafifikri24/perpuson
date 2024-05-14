@@ -78,7 +78,7 @@ export default function Notification() {
           Authorization: `Bearer ${token}`
         }
       };
-    axios.get("https://perpus-smk-delta.vercel.app/tampil/stok/all-history",config)
+    axios.get("https://perpus-smk-delta.vercel.app/tampil/trx",config)
     .then((response)=>{
       setData(response.data)
     })
