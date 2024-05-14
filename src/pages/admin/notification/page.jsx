@@ -184,7 +184,7 @@ function ModalFunction(props) {
           </table>
       </Modal.Body>
       <Modal.Footer>
-       <Button onClick={() => handleSetuju(selectedNotifId)}>Setuju</Button>
+       <Button onClick={() => handleSetuju(selectedNotifId)} disabled={selectedTransaction.status_pinjam === 1}>Setuju</Button>
       <Button onClick={() => handleTidakSetuju(selectedNotifId)}>Tidak Setuju</Button>
       </Modal.Footer>
     </Modal>
