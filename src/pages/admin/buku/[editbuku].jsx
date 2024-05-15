@@ -81,43 +81,44 @@ const handleSubmit =async(a)=>{
         <>
 
             <AdminLayout>
-                <form onSubmit={handleSubmit}>
-                    <h1>Edit</h1>
-
-                    <div class="mb-3">
-                        <label for="Nama" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="Nama" placeholder="Judul Buku"value={judul} onChange={(a) => setJudul(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Kategori</label>
-                        <input type="text" class="form-control" id="Prodi" placeholder="Kategori"value={kategori} onChange={(a) => setKategori(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">ISBN</label>
-                        <input type="text" class="form-control" id="Prodi" placeholder="ISBN"value={isbn} onChange={(a) => setISBN(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Stock</label>
-                        <input type='number' class="form-control" id="Prodi" placeholder="Stock"value={stok} onChange={(a) => setStok(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Pengarang</label>
-                        <input type="text" class="form-control" id="Prodi" placeholder="Pengarang"value={pengarang} onChange={(a) => setPengarang(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Penerbit</label>
-                        <input type="text" class="form-control" id="Prodi" placeholder="Penerbit"value={penerbit} onChange={(a) => setPenerbit(a.target.value)}/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Prodi" class="form-label">Tahun Terbit</label>
-                        <input type="text" class="form-control" id="Prodi" placeholder="Tahun Terbit"value={tahunterbit} onChange={(a) => setTahunterbit(a.target.value)}/>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                        <label class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary" >Submit</button>
-                </form>
+                <div className="p-4">
+                    <form onSubmit={handleSubmit}>
+                        <h1>Edit</h1>
+                        <div class="mb-3">
+                            <label for="Nama" class="form-label">Judul</label>
+                            <input type="text" class="form-control" id="Nama" placeholder="Judul Buku"value={judul} onChange={(a) => setJudul(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">Kategori</label>
+                            <input type="text" class="form-control" id="Prodi" placeholder="Kategori"value={kategori} onChange={(a) => setKategori(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">ISBN</label>
+                            <input type="text" class="form-control" id="Prodi" placeholder="ISBN"value={isbn} onChange={(a) => setISBN(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">Stock</label>
+                            <input type='number' class="form-control" id="Prodi" placeholder="Stock"value={stok} onChange={(a) => setStok(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">Pengarang</label>
+                            <input type="text" class="form-control" id="Prodi" placeholder="Pengarang"value={pengarang} onChange={(a) => setPengarang(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">Penerbit</label>
+                            <input type="text" class="form-control" id="Prodi" placeholder="Penerbit"value={penerbit} onChange={(a) => setPenerbit(a.target.value)}/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prodi" class="form-label">Tahun Terbit</label>
+                            <input type="text" class="form-control" id="Prodi" placeholder="Tahun Terbit"value={tahunterbit} onChange={(a) => setTahunterbit(a.target.value)}/>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
+                            <label class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
+                    </form>
+                </div>
             </AdminLayout>
         </>
     )
