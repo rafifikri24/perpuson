@@ -41,7 +41,7 @@ const handleSubmit =async(a)=>{
     console.log(data) 
     
     try {
-      const response = await axios.post("https://perpus-smk-delta.vercel.app/tambah/siswa", data,config);
+      const response = await axios.post("https://perpus-smk-delta.vercel.app/register-user", data,config);
       console.log(response.data);
       setNoinduk('')
       setNama('')
@@ -80,7 +80,7 @@ const handleSubmit =async(a)=>{
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Password</label>
-                        <input required type="text" class="form-control" id="Prodi" placeholder="Enter Password" value={password} onChange={(a) => setPassword(a.target.value)}/>
+                        <input required type="password" class="form-control" id="Prodi" placeholder="Enter Password" value={password} onChange={(a) => setPassword(a.target.value)}/>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
