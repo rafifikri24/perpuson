@@ -8,7 +8,9 @@ const Tambahsiswa = () =>{
     const router = useRouter()
     const [noinduk, setNoinduk] = useState('');
     const [nama, setNama] = useState('');
-    const [prodi,setProdi] = useState('')
+    const [prodi, setProdi] = useState('')
+    const [password, setPassword]= useState('')
+    const [username, setUsername]= useState('')
 
     useEffect(() => {
         const token = localStorage.getItem('tokenjwt');
@@ -25,6 +27,8 @@ const handleSubmit =async(a)=>{
         no_induk : noinduk,
         nama : nama,
         prodi : prodi,
+        password : password,
+        username : username
 
     }
     const token = localStorage.getItem('tokenjwt');
@@ -42,6 +46,8 @@ const handleSubmit =async(a)=>{
       setNoinduk('')
       setNama('')
       setProdi('')
+      setPassword('')
+      setUsername('')
       window.location='/admin/siswa/siswa'
       // Tambahkan tindakan setelah upload berhasil, misalnya menampilkan pesan sukses
     } catch (error) {
@@ -61,6 +67,10 @@ const handleSubmit =async(a)=>{
                         <input required type="number" class="form-control" id="No" placeholder="Enter No.Induk" value={noinduk} onChange={(a) => setNoinduk(a.target.value)}/>
                     </div>
                     <div class="mb-3">
+                        <label for="Nama" class="form-label">Nama Username</label>
+                        <input required type="text" class="form-control" id="Nama" placeholder="Enter Username" value={username} onChange={(a) => setUsername(a.target.value)}/>
+                    </div>
+                    <div class="mb-3">
                         <label for="Nama" class="form-label">Nama Peminjam</label>
                         <input required type="text" class="form-control" id="Nama" placeholder="Enter Nama Siswa" value={nama} onChange={(a) => setNama(a.target.value)}/>
                     </div>
@@ -68,9 +78,13 @@ const handleSubmit =async(a)=>{
                         <label for="Prodi" class="form-label">Prodi</label>
                         <input required type="text" class="form-control" id="Prodi" placeholder="Enter Prodi" value={prodi} onChange={(a) => setProdi(a.target.value)}/>
                     </div>
+                    <div class="mb-3">
+                        <label for="Prodi" class="form-label">Password</label>
+                        <input required type="text" class="form-control" id="Prodi" placeholder="Enter Password" value={password} onChange={(a) => setPassword(a.target.value)}/>
+                    </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
+                        <label class="form-check-label" for="exampleCheck1">Apakah yakin anda sudah benar ?</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
