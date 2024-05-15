@@ -198,7 +198,7 @@ const handleSubmit =async(a)=>{
                         <input required type='date' class="form-control" id="Prodi" placeholder="Tanggal Kembali" disabled value={kembali} onChange={(a) => setTanggalkembali(a.target.value)}/>
                     </div>
                     <div className="mb-3 form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+                        <input type="checkbox" className="form-check-input" id="exampleCheck1" required/>
                         <label className="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
                     </div>
                     <button type="submit" className="btn btn-primary" >Submit</button>
