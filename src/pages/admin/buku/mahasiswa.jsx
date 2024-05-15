@@ -102,7 +102,7 @@ const handleSubmit =async(a)=>{
                         <input type="text" class="form-control" id="Prodi" placeholder="Tahun Terbit"value={tahunterbit} onChange={(a) => setTahunterbit(a.target.value)}/>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
                         <label class="form-check-label" for="exampleCheck1">Anda Yakin Sudah Benar ?</label>
                     </div>
                     <button type="submit" class="btn btn-primary" >Submit</button>
