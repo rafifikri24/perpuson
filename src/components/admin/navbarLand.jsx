@@ -19,9 +19,6 @@ export default function NavbarLanding() {
                     <Link href="/" className="navbar text-dark text-decoration-none">Perpustakaan SMK PGRI Banyuwangi</Link>
                     </h5>
                 </div>
-                <div className="d-flex">
-                    <Button variant="success"><a href="login" className="text-decoration-none text-light d-flex align-items-center"><label className="px-2">Unduh APK</label><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="white" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg></a></Button>
-                </div>
             </div>
         </nav>
         <style>
