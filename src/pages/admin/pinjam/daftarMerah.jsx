@@ -279,7 +279,7 @@ const Daftarpeminjaman = () =>{
                 <td>{item.no_induk}</td>
                 <td>{item.nama}</td>
                 <td>{item.kode_buku}</td>
-                <td><p style={{width:'500px'}}>{item.judul_buku}</p></td>
+                <td><p style={{width:'300px'}}>{item.judul_buku}</p></td>
                 <td>{item.pengarang}</td>
                 <td>{item.penerbit}</td>
                 <td>{item.tahun_terbit}</td>
