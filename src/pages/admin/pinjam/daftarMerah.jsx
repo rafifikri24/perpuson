@@ -251,49 +251,57 @@ const Daftarpeminjaman = () =>{
         </tr>
       </thead>
       <tbody>
-        {trx.map((item)=>{
-          const today = new Date();
-          const tenggat = new Date(item.tanggal_kembali)
-          const tanggalPinjam = new Date(item.tanggal_pinjam).toLocaleDateString('id-ID')
-          const tanggalKembali = new Date(item.tanggal_kembali).toLocaleDateString('id-ID')
-          const checkTanggal = tenggat - today
-          const durasiPinjam = Math.floor(checkTanggal / (1000 * 60 * 60 * 24));
-          let status 
-          let color
+          {trx.map((item)=>{
+            const today = new Date();
+            const tenggat = new Date(item.tanggal_kembali)
+            const tanggalPinjam = new Date(item.tanggal_pinjam).toLocaleDateString('id-ID')
+            const tanggalKembali = new Date(item.tanggal_kembali).toLocaleDateString('id-ID')
+            const checkTanggal = tenggat - today
+            const durasiPinjam = Math.floor(checkTanggal / (1000 * 60 * 60 * 24));
+            let status 
+            let color
 
-          if (item.jumlah_pinjam === item.jumlah_kembali){
-            status = 'Sudah Kembali'
-            color = '#28a745'
-          }else{            
-            status = 'Belum Kembali'
-            color = '#444444'
-            if (status == 'Belum Kembali' && durasiPinjam < 0) {
-              status = 'Harus Kembali'
-              color = '#D21312'
-            }          
-          }
+            if (item.jumlah_pinjam === item.jumlah_kembali){
+              status = 'Sudah Kembali'
+              color = '#28a745'
+            }else{            
+              status = 'Belum Kembali'
+              color = '#444444'
+              if (status == 'Belum Kembali' && durasiPinjam < 0) {
+                status = 'Harus Kembali'
+                color = '#D21312'
+              }          
+            }
+              if(status == 'Harus Kembali'){
+                return(
+              <tr key={item.kode_transaksi}>
+                <td>{item.kode_transaksi}</td>
+                <td>{item.no_induk}</td>
+                <td>{item.nama}</td>
+                <td>{item.kode_buku}</td>
+                <td><p style={{width:'500px'}}>{item.judul_buku}</p></td>
+                <td>{item.pengarang}</td>
+                <td>{item.penerbit}</td>
+                <td>{item.tahun_terbit}</td>
+                <td>{item.jumlah_pinjam}</td>
+                <td>{item.jumlah_kembali}</td>
+                <td>{tanggalPinjam}</td>
+                <td>{tanggalKembali}</td>
+                <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
+                  <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
+                <td><button type="submit" className="btn btn-primary" onClick={() => deleteTrx(item.kode_transaksi)}>hapus</button></td>
+                <td>                
+                  <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
+                </td>
+              </tr>
+              )
+              }else{
+                return null
+              }
 
-          return(
-            <tr key={item.kode_transaksi}>
-              <td>{item.kode_transaksi}</td>
-              <td>{item.no_induk}</td>
-              <td><p style={{width:'120px'}}>{item.nama}</p></td>
-              <td><p style={{width:'100px'}}>{item.kode_buku}</p></td>
-              <td><p>{item.judul_buku}</p></td>
-              <td><p style={{width:'150px'}}>{item.pengarang}</p></td>
-              <td>{item.penerbit}</td>
-              <td>{item.tahun_terbit}</td>
-              <td>{item.jumlah_pinjam}</td>
-              <td>{item.jumlah_kembali}</td>
-              <td>{tanggalPinjam}</td>
-              <td>{tanggalKembali}</td>
-              <td><p style={{width:'50px'}}>{status}</p></td>
-            </tr>
-          )
-
-        })}
-        
-      </tbody>
+          })}
+          
+        </tbody>
       
     </table>
     </center>
