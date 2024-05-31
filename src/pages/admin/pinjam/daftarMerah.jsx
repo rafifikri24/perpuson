@@ -287,12 +287,8 @@ const Daftarpeminjaman = () =>{
                 <td>{item.jumlah_kembali}</td>
                 <td>{tanggalPinjam}</td>
                 <td>{tanggalKembali}</td>
-                <td style={{backgroundColor:color,width:'100px',height:'50px', textShadow:'-1px -1px 0 #000,	1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',fontSize:'15px',fontWeight:'bold', color:'white'}}>
+                <td>
                   <div className="d-flex align-items-center text-center" style={{height:'100%'}}>{status}</div></td>
-                <td><button type="submit" className="btn btn-primary" onClick={() => deleteTrx(item.kode_transaksi)}>hapus</button></td>
-                <td>                
-                  <Link href={`/admin/pinjam/print/${item.kode_transaksi}`}><button type="submit" className="btn">Cetak</button></Link>
-                </td>
               </tr>
               )
               }else{
