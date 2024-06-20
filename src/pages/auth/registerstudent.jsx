@@ -57,8 +57,8 @@ const Register = () => {
                         <input value={nama} onChange={(e)=> setNama(e.target.value)} type="text" name="nama" id="Nama" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Full Name" required />
                     </div>
                     <div>
-                        <label htmlFor="Prodi" className="block mb-2 text-sm font-medium text-gray-900 text-white">Prodi</label>
-                        <input value={prodi} onChange={(e)=> setProdi(e.target.value)} type="text" name="prodi" id="Prodi" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Prodi" required />
+                        <label htmlFor="Prodi" className="block mb-2 text-sm font-medium text-gray-900 text-white">Kelas</label>
+                        <input value={prodi} onChange={(e)=> setProdi(e.target.value)} type="text" name="prodi" id="Prodi" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Class" required />
                     </div>
                     <div>
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-90 text-white">Password</label>
