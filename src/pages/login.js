@@ -107,7 +107,7 @@ const FormLogin = () => {
                             </div>
                             
                             <div className="mb-4">
-                                <label className="block mb-2 text-sm font-medium text-gray-900 text-white">Select Role:</label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 text-white">Login Sebagai : </label>
                                 <div className="flex items-center">
                                     <input
                                         type="radio"
