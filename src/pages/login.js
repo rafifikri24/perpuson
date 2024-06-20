@@ -128,7 +128,7 @@ const FormLogin = () => {
                                         onChange={() => handleRoleChange('student')}
                                         className="mr-2"
                                     />
-                                    <label htmlFor="student" className="text-gray-900 text-white">Student</label>
+                                    <label htmlFor="student" className="text-gray-900 text-white">Murid</label>
                                 </div>
                             </div>
                             <div className="d-flex column-gap-3">
