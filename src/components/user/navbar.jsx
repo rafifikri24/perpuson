@@ -158,8 +158,8 @@ export default function Navbar() {
                     <input type="text" class="form-control" id="Nama" placeholder="Nama Peminjam" value={nama} onChange={(a) => setNama(a.target.value)} required/>
                 </div>
                 <div class="mb-3">
-                    <label for="Prodi" class="form-label">Prodi</label>
-                    <input type="text" class="form-control" id="Prodi" placeholder="Prodi" value={prodi} onChange={(a) => setProdi(a.target.value)} required/>
+                    <label for="Prodi" class="form-label">Kelas</label>
+                    <input type="text" class="form-control" id="Prodi" placeholder="Kelas" value={prodi} onChange={(a) => setProdi(a.target.value)} required/>
                 </div>
                 <div class="mb-3">
                     <label for="Prodi" class="form-label">Username</label>
