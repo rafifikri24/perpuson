@@ -136,7 +136,21 @@ const Daftarbuku = () =>{
                             <td>{item.pengarang}</td>
                             <td>{item.penerbit}</td>
                             <td>{item.tahun_terbit}</td>
-                            <td><button type="submit" className="btn btn-primary" onClick={() => router.push(`/admin/pinjam/pinjambuku/${item.kode_buku}`)}>Pinjam</button></td>
+                            <td>
+                              <button 
+                                type="submit" 
+                                className="btn btn-primary" 
+                                onClick={() => {
+                                  if (item.stok === 0) {
+                                    alert('Stok habis! Tidak bisa meminjam.');
+                                  } else {
+                                    router.push(`/admin/pinjam/pinjambuku/${item.kode_buku}`);
+                                  }
+                                }}
+                              >
+                                Pinjam
+                              </button>
+                            </td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => deletePmnjm(item.kode_buku)}>Hapus</button></td>
                             <td>                
                               <Link href={`/admin/buku/${item.kode_buku}`}><button type="submit" className="btn btn-secondary">Edit</button></Link>
