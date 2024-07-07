@@ -65,12 +65,13 @@ const handleSubmit =async(a)=>{
         kode_transaksi : nextId,
         no_induk : noinduk,
         nama_peminjam : namaPeminjam,
-        kode_buku : kodebuku,
+        kode_buku : kode,
         judul_buku :judul,
         pengarang : pengarang,
         penerbit : penerbit,
         tahun_terbit : tahunterbit,
-        jumlah_pinjam : jumlahpinjam,
+        status_pinjam : 1,
+        jumlah_pinjam : 1,
         tanggal_pinjam : tanggalpinjam,
         tanggal_kembali : kembali,
 
@@ -167,10 +168,6 @@ const handleSubmit =async(a)=>{
                     <div className="mb-3">
                         <label for="Prodi" className="form-label">Tahun Terbit</label>
                         <input disabled type="text" className="form-control" id="Prodi" placeholder="Tahun Terbit"value={tahunterbit} onChange={(a) => setTahunterbit(a.target.value)}/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="Prodi" className="form-label">Jumlah Pinjam</label>
-                        <input required type="text" className="form-control" id="Prodi" placeholder="Jumlah Pinjam"value={jumlahpinjam} onChange={(a) => setJumlahpinjam(a.target.value)}/>
                     </div>
                     <div class="mb-3">
                         <label for="Prodi" class="form-label">Tanggal Pinjam <span><small>(Bulan / Tanggal / Tahun)</small></span></label>
