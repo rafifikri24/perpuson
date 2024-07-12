@@ -16,7 +16,7 @@ export default function NavbarLanding() {
                 <div className="d-flex align-items-center">
                     <img src="smkpgri1banyuwangi.png" alt="Logo" style={{ marginRight: "10px" }} width={50} height={50}/>
                     <h5 style={{margin: 0}}>
-                    <Link href="/" className="navbar text-dark text-decoration-none">Perpustakaan SMK PGRI Banyuwangi</Link>
+                    <Link href="/" className="navbar text-dark text-decoration-none">Perpustakaan SMK PGRI 1 Banyuwangi</Link>
                     </h5>
                 </div>
             </div>
